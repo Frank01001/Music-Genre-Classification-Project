@@ -29,10 +29,10 @@ def silent_ratio(signal):
 def create_dataset():
     featurelist = list()
     for root, dir, files in os.walk("./genres/"):
-        for k, genre in enumerate(dir):
+        for k, genre in enumerate(sorted(dir)):
             print('Started genre {} ({})'.format(k, genre))
-            for root2, dir2, tracks in os.walk('./genres/' + genre + '/'):
-                for track in tracks:
+            for root2, dir2, tracks in os.walk("./genres/" + genre + '/'):
+                for track in sorted(tracks):
                     wav_file = wave.open(root2 + track, 'rb')
                     signal = wav_file.readframes(-1)
                     signal = np.frombuffer(signal, dtype='int16')
@@ -43,10 +43,6 @@ def create_dataset():
                     featurelist.append(silent_ratio(signal))
                     featurelist.append(k)
                     print('Working on track {}'.format(track))
-                featurearr = np.array(featurelist).reshape(len(featurelist) // 4, 4)
-                df = pd.DataFrame(featurearr, columns=['ZCR', 'AVERAGE_ENERGY', 'SILENT_RATIO', 'CLASS'])
-                df.to_csv('test_dataset.csv')
-                return
             print('Ended genre {} ({})'.format(k, genre))
     featurearr = np.array(featurelist).reshape(len(featurelist)//4, 4)
     df = pd.DataFrame(featurearr, columns=['ZCR', 'AVERAGE_ENERGY', 'SILENT_RATIO', 'CLASS'])
