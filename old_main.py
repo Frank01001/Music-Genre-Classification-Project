@@ -13,8 +13,10 @@ test_file.close()
 
 # print(signal.shape)
 
-plt.figure(1)
-plt.title("Signal Wave...")
-plt.plot(signal)
-plt.show()
+print(feature_extraction.average_energy(signal))
+
+# plt.figure(1)
+# plt.title("Signal Wave...")
+# plt.plot(signal)
+# plt.show()
 
