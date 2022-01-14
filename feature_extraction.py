@@ -26,6 +26,15 @@ def silent_ratio(signal):
     return sr / signal.size
 
 
+def normalize_dataset(dataset_path):
+    set = pd.read_csv(dataset_path)
+    set_mean = set.mean()
+    set_std = set.std()
+    rdata_normalized = (set - set_mean) / set_std
+    out_path = dataset_path[:-4] + '_normalized.csv'
+    rdata_normalized.to_csv(out_path)
+
+
 def create_dataset():
     featurelist = list()
     for root, dir, files in os.walk("./genres/"):
