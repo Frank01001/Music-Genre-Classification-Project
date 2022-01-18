@@ -43,6 +43,39 @@
     \field{year}{1998}
   \endentry
 
+  \entry{comparison}{article}{}
+    \name{author}{2}{}{%
+      {{hash=ENT}{%
+         family={Elizabeth\bibnamedelima Nurmiyati},
+         familyi={E\bibinitperiod\bibinitdelim N\bibinitperiod},
+         given={Tamatjita},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=AWM}{%
+         family={Aditya\bibnamedelima Wikan},
+         familyi={A\bibinitperiod\bibinitdelim W\bibinitperiod},
+         given={Mahastama},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \keyw{classification,genre,music}
+    \strng{namehash}{ENTAWM1}
+    \strng{fullhash}{ENTAWM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \verb{doi}
+    \verb 978-1-5090-3352-2
+    \endverb
+    \field{pages}{118\bibrangedash 123}
+    \field{title}{Comparison of Music Genre Classification Using Nearest
+  Centroid Classifier and k-Nearest Neighbours}
+    \field{journaltitle}{International Conference on Information Management and
+  Technology (ICIMTech)}
+    \field{year}{2016}
+  \endentry
+
   \entry{marsyas}{online}{}
     \name{author}{1}{}{%
       {{hash=JL}{%

@@ -74,8 +74,37 @@
 		plt.show()
 		
 	\end{lstlisting}
+	\newpage
 	
 	\paragraph{Feature Extraction}\mbox{}\\\newline
+	For what concerns the features required to classify the genres, our first choice was the triplet \textit{Zero Crossing Rate}, \textit{Average Energy} and \textit{Silent Ratio} as defined in one of the provided papers\cite{comparison}. The extracted features were collected and exported in a csv file to avoid having to extract the feature multiple times, as the complete process took approximately 45 minutes on \textit{Google Colab}.\\
+	
+	\textbf{Zero Crossing Rate}\\
+	It indicates the frequency of signal amplitude sign change, which is in some way related to the average signal frequency. In practice, it is a key feature to classify percussive sounds as it's often correlated with the beat. ZCR records how many waves have passed for a certain time, by giving a positive amplitude a positive value (1) and a negative amplitude a negative value (-1). The implemented formula is as follows:
+	
+	\begin{equation}
+		\text{ZCR}=\dfrac{\sum_{n=1}^N{\bigg|\text{sgn}\ x(n)-\text{sgn}\ x(n-1)\bigg|}}{2N}
+	\end{equation}
+	
+	where sgn $x$ is the \textit{sign function}.\\
+	
+	\textbf{Average Energy}\\
+	It indicates the loudness of the audio signal as a whole, being the average of the square amplitude of the audio signal.
+	\begin{equation}
+		\text{E}_\text{avg}=\dfrac{\sum_{n=0}^{N-1}{x(n)^2}}{N}
+	\end{equation}
+	In practice, it corresponds to the loudness of the music within the time slice where it is measured. \\
+	
+	\textbf{Silent Ratio}\\
+	It indicates the proportion of the sound piece that is considered to be \textit{silent}. Silence is defined as a period within which the absolute value of amplitude is below a certain threshold. If we indicate
+	\begin{equation}
+		SR = \dfrac{\sum_{x(n)<\text{thr}} 1}{N}
+	\end{equation}
+	In our implementation, silence threshold is derived from the average energy as follows...
+	\begin{equation}
+		\text{thr}=0.8\sqrt{E_\text{avg}}
+	\end{equation}
+	\mbox{}\\
 	
 	\section{k-Nearest Neighbours Classifier}
 	In this section it will be explained which methodologies have been used to implement the music genre classifier and how the code has been structure to achieve the results exposed at the end of the report 

@@ -6,10 +6,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{The Dataset}{2}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Feature Extraction}{3}{}%
+\contentsline {paragraph}{Feature Extraction}{4}{}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}k-Nearest Neighbours Classifier}{4}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Nearest Centroid Classifier}{4}{}%
+\contentsline {section}{\numberline {3}Nearest Centroid Classifier}{5}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Multiclass SVM Classifier}{4}{}%
+\contentsline {section}{\numberline {4}Multiclass SVM Classifier}{5}{}%
