@@ -2,23 +2,85 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage[margin=2cm]{geometry}
 \usepackage[parfill]{parskip}
+\usepackage{listings}
 \usepackage{xcolor}
+\usepackage[style=numeric-comp,useprefix,hyperref,backend=bibtex]{biblatex}
 \definecolor{dark-green}{RGB}{0,175,0}
 \definecolor{dark-red}{RGB}{200,0,0}
+\graphicspath{ {./pictures/} }
+\addbibresource{report.bib}
+\DeclareUnicodeCharacter{202F}{\,}
 \begin{document}
-	\title{Report\\
-		\date{October 2021}
+	\title{NAML Project Report - Group 14\\\vspace{20pt}
+		\Large{Music Genre Classification using}\\
+		\large{k-Nearest Neighbours\\ Nearest Centroid\\ Multiclass SVM}\\
+		\date{February 2022}
 		\large{-\\}
-		\large{from thi\\}
+		\large{by Silvia Marino (codice persona) and Francesco Panebianco (10632465)\\}
 		\small{DEIB - Politecnico di Milano}
 	}
 	\maketitle
 	\tableofcontents
 	\newpage
-	\section{SASA}
-	\paragraph{Soudsdty}\mbox{}\\\newline
+	\section{Introduction}
+	\paragraph{Scope}\mbox{}\\\newline
+	The scope of this project is to create a music genre classifier using the machine learning algorithms \textit{k-Nearest Neighbours} and \textit{Multiclass SVM}, which were assigned to our group. The project is part of the evaluation of the “Numerical Analysis for Machine Learning” course, which is part of the first semester of the first year of Master’s Degree in Computer Science and Engineering at Politecnico di Milano. Given the similarities between \textit{k-Nearest Neighbours} and \textit{Nearest Centroid}, we chose to implement the latter as well, comparing its performance to the former, even though it is outside the specification of the project.\\ 
 	
+	\paragraph{The Dataset}\mbox{}\\\newline
+	The dataset assigned to our project is the notorious \textit{GTZAN Genre Collection}\cite{marsyas}, which contains 100 different extracts from 10 different music genres, provided in .wav (Waveform Audio File Format). The genres considered are: 
+	
+	\begin{itemize}
+		\item Blues 
+		\item Classical 
+		\item Country 
+		\item Disco 
+		\item Hip Hop 	
+		\item Jazz 
+		\item Metal 
+		\item Pop 
+		\item Reggae 
+		\item Rock 
+	\end{itemize}
+
+	As it can be seen, genres that share similarities are included in the dataset (e.g. Blues and Jazz), but also dramatically different types of music such as Rock and Classical, which we expect the algorithms to classify with higher precision.
+	
+	The \textit{.wav} file format used by the dataset is the most common uncompressed audio file format in Microsoft Windows systems for. It was developed by IBM and Microsoft, for storing an audio bitstream on PCs\cite{wave}.\\
+	
+	\begin{figure}[H]
+		\hspace{100pt}\includegraphics[scale=0.7]{waveform}
+		\caption{Plotted waveform of blues.00000.wav}
+	\end{figure}
+	
+	
+	This kind of files are managed in Python by using the \textit{wave} module, which provides convenient functions to work with the WAV sound format. In our case, the audio samples are provided as 22050Hz Mono 16-bit 30 second tracks\cite{marsyas}, which are easily transformed into a numpy array of \textit{int16}.\\
+	The picture above is the result of the following code:
+	\begin{lstlisting}[language=Python]
+		import wave
+		import matplotlib.pyplot as plt
+		import numpy as np
 		
+		test_file = wave.open('genres/blues/blues.00000.wav', 'rb')
+		# Extract Raw Audio from Wav File
+		signal = test_file.readframes(-1)
+		signal = np.frombuffer(signal, dtype='int16')
+		test_file.close()
+		
+		plt.figure(1)
+		plt.title("Signal Wave...")
+		plt.plot(signal)
+		plt.show()
+		
+	\end{lstlisting}
+	
+	\paragraph{Feature Extraction}\mbox{}\\\newline
+	
+	\section{k-Nearest Neighbours Classifier}
+	In this section it will be explained which methodologies have been used to implement the music genre classifier and how the code has been structure to achieve the results exposed at the end of the report 
+	\section{Nearest Centroid Classifier}
+	\section{Multiclass SVM Classifier}
+		
+	\printbibliography
 \end{document}

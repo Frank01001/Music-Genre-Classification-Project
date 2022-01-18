@@ -2,6 +2,7 @@ import wave
 import matplotlib.pyplot as plt
 import numpy as np
 import feature_extraction
+import matplotlib.pyplot as plt
 
 # feature_extraction.create_dataset()
 
@@ -15,8 +16,8 @@ test_file.close()
 
 print(feature_extraction.average_energy(signal))
 
-# plt.figure(1)
-# plt.title("Signal Wave...")
-# plt.plot(signal)
-# plt.show()
+plt.figure(1)
+plt.title("Signal Wave...")
+plt.plot(signal)
+plt.show()
 
