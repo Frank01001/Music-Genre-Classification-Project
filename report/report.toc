@@ -8,8 +8,12 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Feature Extraction}{4}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}k-Nearest Neighbours Classifier}{4}{}%
+\contentsline {paragraph}{Dataset Visualization}{5}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Nearest Centroid Classifier}{5}{}%
+\contentsline {section}{\numberline {2}Classifiers}{7}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Multiclass SVM Classifier}{5}{}%
+\contentsline {paragraph}{k-Nearest Neighbours Classifier}{7}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Nearest Centroid Classifier}{7}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Multiclass SVM Classifier}{7}{}%

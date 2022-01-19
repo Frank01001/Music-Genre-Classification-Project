@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.17)  18 JAN 2022 21:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.17)  19 JAN 2022 19:09
 entering extended mode
 **./report.tex
 (report.tex
@@ -477,20 +477,20 @@ File: l3backend-pdftex.def 2021-10-12 L3 backend support: PDF output (pdfTeX)
 ) (report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
 
 (C:\Users\frapa\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -599,15 +599,15 @@ Package: blx-case-expl3 2020/12/31 v3.16 expl3 case changing code for biblatex
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' found.
  (report.bbl)
-Package biblatex Info: Reference section=0 on input line 16.
-Package biblatex Info: Reference segment=0 on input line 16.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+Package biblatex Info: Reference section=0 on input line 17.
+Package biblatex Info: Reference segment=0 on input line 17.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 26.
 
 
 (C:\Users\frapa\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 26.
 
 
 (C:\Users\frapa\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -623,73 +623,119 @@ LaTeX Warning: No \author given.
  [1
 
 {C:/Users/frapa/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 29--31
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--31
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--34
+Underfull \hbox (badness 10000) in paragraph at lines 33--35
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--51
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
 
  []
 
 <./pictures//waveform.png, id=9, 462.528pt x 346.896pt>
 File: ./pictures//waveform.png Graphic file (type png)
 <use ./pictures//waveform.png>
-Package pdftex.def Info: ./pictures//waveform.png  used on input line 53.
+Package pdftex.def Info: ./pictures//waveform.png  used on input line 54.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
 [2]
 (C:\Users\frapa\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-Overfull \hbox (28.26509pt too wide) in paragraph at lines 65--66
+Overfull \hbox (28.26509pt too wide) in paragraph at lines 66--67
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [3 <./pictures//waveform.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 79--81
+Underfull \hbox (badness 10000) in paragraph at lines 80--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--81
+Underfull \hbox (badness 10000) in paragraph at lines 80--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--90
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--97
+Underfull \hbox (badness 10000) in paragraph at lines 96--98
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 110--112
+
+ []
+
+<./pictures//visual_8_1.png, id=29, 447.6725pt x 335.2525pt>
+File: ./pictures//visual_8_1.png Graphic file (type png)
+<use ./pictures//visual_8_1.png>
+Package pdftex.def Info: ./pictures//visual_8_1.png  used on input line 126.
+(pdftex.def)             Requested size: 313.3686pt x 234.67514pt.
+<./pictures//visual_4_1.png, id=30, 784.73175pt x 479.391pt>
+File: ./pictures//visual_4_1.png Graphic file (type png)
+<use ./pictures//visual_4_1.png>
+Package pdftex.def Info: ./pictures//visual_4_1.png  used on input line 132.
+(pdftex.def)             Requested size: 431.60379pt x 263.66586pt.
+[5 <./pictures//visual_8_1.png>]
+<./pictures//visual_5_1.png, id=35, 786.5385pt x 479.99326pt>
+File: ./pictures//visual_5_1.png Graphic file (type png)
+<use ./pictures//visual_5_1.png>
+Package pdftex.def Info: ./pictures//visual_5_1.png  used on input line 137.
+(pdftex.def)             Requested size: 432.59752pt x 263.9971pt.
+<./pictures//visual_6_1.png, id=36, 784.73175pt x 479.99326pt>
+File: ./pictures//visual_6_1.png Graphic file (type png)
+<use ./pictures//visual_6_1.png>
+Package pdftex.def Info: ./pictures//visual_6_1.png  used on input line 142.
+(pdftex.def)             Requested size: 431.60379pt x 263.9971pt.
+ [6 <./pictures//visual_4_1.png> <./pictures//visual_5_1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--108
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
 
  []
 
-[4] [5] (report.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
+
+ []
+
+[7 <./pictures//visual_6_1.png>] [8] (report.aux)
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 13203 strings out of 478927
- 226986 string characters out of 2852534
- 899556 words of memory out of 3000000
- 30913 multiletter control sequences out of 15000+600000
+ 13254 strings out of 478927
+ 228219 string characters out of 2852534
+ 906547 words of memory out of 3000000
+ 30964 multiletter control sequences out of 15000+600000
  413340 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,8n,70p,1860b,1238s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -709,9 +755,9 @@ cm/cmsy10.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmsy8.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/amsfonts/cm/cmti12.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (5 pages, 196843 bytes).
+Output written on report.pdf (8 pages, 476347 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
+ 111 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

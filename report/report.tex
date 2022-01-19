@@ -12,6 +12,7 @@
 \definecolor{dark-red}{RGB}{200,0,0}
 \graphicspath{ {./pictures/} }
 \addbibresource{report.bib}
+\setcounter{tocdepth}{6}
 \DeclareUnicodeCharacter{202F}{\,}
 \begin{document}
 	\title{NAML Project Report - Group 14\\\vspace{20pt}
@@ -104,12 +105,50 @@
 	\begin{equation}
 		\text{thr}=0.8\sqrt{E_\text{avg}}
 	\end{equation}
-	\mbox{}\\
+	\newpage
 	
-	\section{k-Nearest Neighbours Classifier}
+	\paragraph{Dataset Visualization}\mbox{}\\\newline
+	After exporting the feature dataset, we visualized it using built-in functions from \textit{pandas} and \textit{seaborn}. Full dataset visualization is available in a the Jupiter Notebook called\\ \textit{NAML\_Project\_Data\_Visualization.ipynb}.
+	
+	\begin{lstlisting}
+    		       ZCR  AVERAGE_ENERGY  SILENT_RATIO
+	count  1000.000000    1.000000e+03   1000.000000
+	mean      0.103768    2.631159e+07      0.827613
+	std       0.041886    2.396840e+07      0.024517
+	min       0.021714    6.178678e+04      0.767521 
+	25%       0.070328    9.781419e+06      0.810039
+	50%       0.099618    1.834412e+07      0.824969
+	75%       0.132136    3.768007e+07      0.842175
+	max       0.275001    1.777716e+08      0.926341
+	\end{lstlisting}
+	
+	\begin{figure}[H]
+		\hspace{100pt}\includegraphics[scale=0.7]{visual_8_1}
+		\caption{Annotated Heatmap of the correlation of extracted features}
+	\end{figure}
+	From this visualization, it is evident that the three features are independent enough to be non-redundant in the classification. 
+	
+	\begin{figure}[H]
+		\hspace{40pt}\includegraphics[scale=0.55]{visual_4_1}
+		\caption{Distribution Plot of ZCR feature}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\hspace{40pt}\includegraphics[scale=0.55]{visual_5_1}
+		\caption{Distribution Plot of Average Energy feature}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\hspace{40pt}\includegraphics[scale=0.55]{visual_6_1}
+		\caption{Distribution Plot of Silent Ratio feature}
+	\end{figure}
+
+	
+	\section{Classifiers}
+	\paragraph{k-Nearest Neighbours Classifier}\mbox{}\\\newline
 	In this section it will be explained which methodologies have been used to implement the music genre classifier and how the code has been structure to achieve the results exposed at the end of the report 
-	\section{Nearest Centroid Classifier}
-	\section{Multiclass SVM Classifier}
+	\paragraph{Nearest Centroid Classifier}\mbox{}\\\newline
+	\paragraph{Multiclass SVM Classifier}\mbox{}\\\newline
 		
 	\printbibliography
 \end{document}
