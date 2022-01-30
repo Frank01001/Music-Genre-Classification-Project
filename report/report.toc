@@ -10,10 +10,18 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Dataset Visualization}{5}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Classifiers}{7}{}%
+\contentsline {paragraph}{Alternative Feature Set: Mel-Frequency Cepstral Coefficients}{7}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{k-Nearest Neighbours Classifier}{7}{}%
+\contentsline {section}{\numberline {2}Classifiers}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Nearest Centroid Classifier}{7}{}%
+\contentsline {paragraph}{k-Nearest Neighbours Classifier}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Multiclass SVM Classifier}{7}{}%
+\contentsline {paragraph}{Nearest Centroid Classifier}{9}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Multiclass SVM Classifiers}{9}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{Building Blocks}{9}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{One-To-Rest Classifier}{9}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{One-To-One Classifier}{9}{}%

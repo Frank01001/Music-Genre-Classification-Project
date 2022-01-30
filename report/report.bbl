@@ -97,5 +97,55 @@
     \verb http://marsyas.info/downloads/datasets.html
     \endverb
   \endentry
+
+  \entry{classification}{report}{}
+    \name{author}{3}{}{%
+      {{hash=JC}{%
+         family={John},
+         familyi={J\bibinitperiod},
+         given={Cast},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=CS}{%
+         family={Chris},
+         familyi={C\bibinitperiod},
+         given={Schulze},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=AF}{%
+         family={Ali},
+         familyi={A\bibinitperiod},
+         given={Fauci},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{JCCSAF1}
+    \strng{fullhash}{JCCSAF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{J}
+    \field{sortinithash}{J}
+    \field{title}{Music Genre Classification}
+    \list{institution}{1}{%
+      {Stanford University - Computer Science Machine Learning course CS229}%
+    }
+    \field{type}{techreport}
+    \field{year}{2013}
+  \endentry
+
+  \entry{librosarepo}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \verb{doi}
+    \verb 10.5281/zenodo.4792298
+    \endverb
+    \field{title}{Librosa Github Repository: MFCC extraction details}
+    \verb{url}
+    \verb https://github.com/librosa/librosa/blob/main/librosa/feature/spectral
+    \verb .py
+    \endverb
+    \field{year}{2015}
+  \endentry
 \enddatalist
 \endinput

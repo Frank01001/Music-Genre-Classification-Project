@@ -48,7 +48,7 @@
 
 	As it can be seen, genres that share similarities are included in the dataset (e.g. Blues and Jazz), but also dramatically different types of music such as Rock and Classical, which we expect the algorithms to classify with higher precision.
 	
-	The \textit{.wav} file format used by the dataset is the most common uncompressed audio file format in Microsoft Windows systems for. It was developed by IBM and Microsoft, for storing an audio bitstream on PCs\cite{wave}.\\
+	The dataset provides audio samples as \textit{.wav} files. WAV is the most common uncompressed audio file format in Microsoft Windows systems. It was developed by IBM and Microsoft, for storing an audio bitstream on PCs\cite{wave}.\\
 	
 	\begin{figure}[H]
 		\hspace{100pt}\includegraphics[scale=0.7]{waveform}
@@ -78,7 +78,7 @@
 	\newpage
 	
 	\paragraph{Feature Extraction}\mbox{}\\\newline
-	For what concerns the features required to classify the genres, our first choice was the triplet \textit{Zero Crossing Rate}, \textit{Average Energy} and \textit{Silent Ratio} as defined in one of the provided papers\cite{comparison}. The extracted features were collected and exported in a csv file to avoid having to extract the feature multiple times, as the complete process took approximately 45 minutes on \textit{Google Colab}.\\
+	For what concerns the features required to classify the genres, our first choice was the triplet \textit{Zero Crossing Rate}, \textit{Average Energy} and \textit{Silent Ratio} as defined in one of the papers provided by the project specification \cite{comparison}. The extracted features were collected and exported in a csv file to avoid having to extract the feature multiple times, as the complete process took approximately 45 minutes on \textit{Google Colab}.\\
 	
 	\textbf{Zero Crossing Rate}\\
 	It indicates the frequency of signal amplitude sign change, which is in some way related to the average signal frequency. In practice, it is a key feature to classify percussive sounds as it's often correlated with the beat. ZCR records how many waves have passed for a certain time, by giving a positive amplitude a positive value (1) and a negative amplitude a negative value (-1). The implemented formula is as follows:
@@ -94,7 +94,7 @@
 	\begin{equation}
 		\text{E}_\text{avg}=\dfrac{\sum_{n=0}^{N-1}{x(n)^2}}{N}
 	\end{equation}
-	In practice, it corresponds to the loudness of the music within the time slice where it is measured. \\
+	In practice, it corresponds to the momentum or the force of the music within the time slice where it is measured. \\
 	
 	\textbf{Silent Ratio}\\
 	It indicates the proportion of the sound piece that is considered to be \textit{silent}. Silence is defined as a period within which the absolute value of amplitude is below a certain threshold. If we indicate
@@ -108,7 +108,7 @@
 	\newpage
 	
 	\paragraph{Dataset Visualization}\mbox{}\\\newline
-	After exporting the feature dataset, we visualized it using built-in functions from \textit{pandas} and \textit{seaborn}. Full dataset visualization is available in a the Jupiter Notebook called\\ \textit{NAML\_Project\_Data\_Visualization.ipynb}.
+	After exporting the feature dataset, we visualized it using built-in functions from \textit{pandas} and \textit{seaborn}. Full dataset visualization is available in a the Jupyter Notebook called\\ \textit{NAML\_Project\_Data\_Visualization.ipynb}.
 	
 	\begin{lstlisting}
     		       ZCR  AVERAGE_ENERGY  SILENT_RATIO
@@ -143,12 +143,53 @@
 		\caption{Distribution Plot of Silent Ratio feature}
 	\end{figure}
 
+	\paragraph{Alternative Feature Set: Mel-Frequency Cepstral Coefficients}\mbox{}\\\newline
+	The second paper provided by project specification \cite{classification} mentioned the possibility of using \textit{Mel-Frequency Cepstral Coefficients} as features for music genre classification.
+	
+	The \textbf{Mel-frequency Cepstrum} (MFC) is a representation of the short term power spectrum. The \textbf{Mel-frequency Cepstral Coefficients} (MFCCs) collectively make up an MFC. A Cepstrum is defined as a non-linear spectrum-of-a-spectrum.
+	
+	The peculiarity of an MFC with respect to a generic cepstrum is, as the name suggests, the usage of the \textit{Mel-frequency Scale}, which emulates the human hearing response more closely than the linearly spaced frequency bands used in the normal spectrum.
+	
+	MFCC extraction is a relatively standardized algorithm, so we've chosen a popular python library to aid us in the extraction: \textit{librosa}. As the library source code shows \cite{librosarepo}, the implemented extraction procedure is as follows:
+	\begin{enumerate}
+	\item Since a time series is provided, the spectrogram of the signal is computed.
+	\item The spectrogram is mapped to the mel scale
+	\item The $\mathbf{\log}$ of the result is taken (dB conversion)
+	\item The \textit{Discrete Cosine Transform} is applied
+	\end{enumerate}
+	
+	The Librosa implementation also supports a final processing step: Sinusoidal Liftering, which is reportedly considered beneficial to speech recognition applications. Since this is outside the scope of the classifier, no Liftering was applied.
+	
+	The input signal is automatically divided into a certain number of windows, each with their MFCCs, most applications can deal with the first 13 MFCCs, as they carry the most relevant information for the section of the spectrum that can be heard by the human ear.
+	\begin{figure}[H]
+		\includegraphics[scale=0.4]{mfcc_spectrogram}
+		\caption{Mel-Frequency Cepstral Coefficents spectrogram of \textit{blues.00000.wav}}
+	\end{figure}
+	
+	Given that the resulting MFCCs of the signal are returned in a matrix with rows corresponding to the 13 coefficients and columns corresponding to all windows of the original signal, we chose to keep the mean and the variance of each MFCC across the signal as a feature for classification.
+	
+	Librosa also allows for the computation of local estimates of n-order derivatives for MFCCs using the \textit{librosa.feature.delta} function. Mean and variance of this such features (namely order 1 and 2) have also been kept for the classifier.
+	
+	A specific Jupyter Notebook named \textit{NAML Project Mel-frequency cepstrum.ipynb} handles the visualization and generation of the MFCC data for the dataset assigned to this project (the exported feature set is called \textit{mfcc\_dataset.csv}).
+	
+	\newpage
 	
 	\section{Classifiers}
 	\paragraph{k-Nearest Neighbours Classifier}\mbox{}\\\newline
 	In this section it will be explained which methodologies have been used to implement the music genre classifier and how the code has been structure to achieve the results exposed at the end of the report 
 	\paragraph{Nearest Centroid Classifier}\mbox{}\\\newline
-	\paragraph{Multiclass SVM Classifier}\mbox{}\\\newline
-		
+	\paragraph{Multiclass SVM Classifiers}\mbox{}\\\newline
+	The implementation of a \textit{Support Vector Machine} classifier can be accomplished in a variety of different ways. To explore them before moving to the full Multiclass application, we created a Jupyter Notebook called \textit{NAML\_Project\_Experiments.ipynb}. After testing the binary classification performance, we adapted the code for the multi-class case, exploring both the \textit{One-To-Rest} strategy and the \textit{One-To-One} strategy.
+	\subparagraph{Building Blocks}\mbox{}\\\newline
+	The implementation of a Support Vector Machine problem can be either derived from the primal or the dual formulation.
+	
+	\textbf{Primal Formulation - Hard Margin}\\
+	\textbf{Primal Formulation - Soft Margin}\\
+	\textbf{Primal Formulation - Soft Margin with Feature Map}\\
+	\textbf{Dual Formulation - Linear Margin}\\
+	\textbf{Dual Formulation - Kernel Trick}\\
+	\subparagraph{One-To-Rest Classifier}\mbox{}\\\newline
+	\subparagraph{One-To-One Classifier}\mbox{}\\\newline
+	
 	\printbibliography
 \end{document}
