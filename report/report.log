@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.17)  30 JAN 2022 23:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.17)  31 JAN 2022 19:53
 entering extended mode
 **./report.tex
 (report.tex
@@ -743,62 +743,135 @@ Underfull \hbox (badness 10000) in paragraph at lines 183--185
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--191
+Underfull \hbox (badness 10000) in paragraph at lines 186--188
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--192
+Underfull \hbox (badness 10000) in paragraph at lines 191--193
+
+ []
+
+<./pictures//exp1_legend.png, id=52, 1134.2375pt x 668.4975pt>
+File: ./pictures//exp1_legend.png Graphic file (type png)
+<use ./pictures//exp1_legend.png>
+Package pdftex.def Info: ./pictures//exp1_legend.png  used on input line 195.
+(pdftex.def)             Requested size: 226.84348pt x 133.69713pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
+
+ []
+
+[9 <./pictures//exp1_legend.png>]
+<./pictures//gd1.png, id=58, 972.63374pt x 482.80376pt>
+File: ./pictures//gd1.png Graphic file (type png)
+<use ./pictures//gd1.png>
+Package pdftex.def Info: ./pictures//gd1.png  used on input line 211.
+(pdftex.def)             Requested size: 486.31567pt x 241.40129pt.
+
+Overfull \hbox (5.83168pt too wide) in paragraph at lines 211--212
+[] [] 
+ []
+
+<./pictures//plane1.png, id=59, 680.5425pt x 336.0555pt>
+File: ./pictures//plane1.png Graphic file (type png)
+<use ./pictures//plane1.png>
+Package pdftex.def Info: ./pictures//plane1.png  used on input line 215.
+(pdftex.def)             Requested size: 272.21217pt x 134.41982pt.
+<./pictures//plane1_side.png, id=60, 635.37375pt x 489.62926pt>
+File: ./pictures//plane1_side.png Graphic file (type png)
+<use ./pictures//plane1_side.png>
+Package pdftex.def Info: ./pictures//plane1_side.png  used on input line 216.
+(pdftex.def)             Requested size: 254.14499pt x 195.84822pt.
+
+Overfull \hbox (28.48425pt too wide) in paragraph at lines 215--217
+[][] [] 
+ []
+
+[10 <./pictures//gd1.png>]
+<./pictures//quad_feat.png, id=65, 680.5425pt x 401.0985pt>
+File: ./pictures//quad_feat.png Graphic file (type png)
+<use ./pictures//quad_feat.png>
+Package pdftex.def Info: ./pictures//quad_feat.png  used on input line 237.
+(pdftex.def)             Requested size: 272.21217pt x 160.43654pt.
+<./pictures//quad_feat_side.png, id=66, 572.73975pt x 402.303pt>
+File: ./pictures//quad_feat_side.png Graphic file (type png)
+<use ./pictures//quad_feat_side.png>
+Package pdftex.def Info: ./pictures//quad_feat_side.png  used on input line 238
+.
+(pdftex.def)             Requested size: 229.09183pt x 160.91833pt.
+
+Overfull \hbox (3.43109pt too wide) in paragraph at lines 237--239
+[][] [] 
+ []
+
+[11 <./pictures//plane1.png> <./pictures//plane1_side.png> <./pictures//quad_fe
+at.png> <./pictures//quad_feat_side.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 247--249
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--192
+Underfull \hbox (badness 10000) in paragraph at lines 267--268
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--193
+Underfull \hbox (badness 10000) in paragraph at lines 267--268
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--193
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
 
  []
 
-[9] [10] (report.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
+
+ []
+
+[12]
+Overfull \hbox (0.65605pt too wide) in paragraph at lines 271--271
+[]\OT1/cmr/m/it/12 Scipy Op-ti-miza-tion and root find-ing\OT1/cmr/m/n/12 . \OT
+1/cmr/m/sc/12 url\OT1/cmr/m/n/12 : $\OT1/cmtt/m/n/12 https : / / docs . scipy .
+ org / doc / scipy / reference /
+ []
+
+[13] (report.aux)
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 13277 strings out of 478927
- 228901 string characters out of 2852534
- 907443 words of memory out of 3000000
- 30985 multiletter control sequences out of 15000+600000
+ 13346 strings out of 478927
+ 230693 string characters out of 2852534
+ 907727 words of memory out of 3000000
+ 31054 multiletter control sequences out of 15000+600000
  413961 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,8n,70p,1860b,1236s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,14n,70p,1860b,1238s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\frapa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1200.pk><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmcsc10.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmex10.pfb><C:/Users/frapa/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/frapa/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/frapa/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/frapa/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/
-frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C
-:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8
-.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmsy8.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmti12.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (10 pages, 519305 bytes).
+ic/amsfonts/cm/cmbx8.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/frapa/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/frapa/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/frapa/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/
+frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C
+:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr1
+2.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmr17.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmr8.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/frapa/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/frapa/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on report.pdf (13 pages, 1172566 bytes).
 PDF statistics:
- 119 PDF objects out of 1000 (max. 8388607)
+ 150 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -22,6 +22,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{Building Blocks}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{One-To-Rest Classifier}{9}{}%
+\contentsline {subparagraph}{One-To-Rest Classifier}{12}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{One-To-One Classifier}{9}{}%
+\contentsline {subparagraph}{One-To-One Classifier}{12}{}%

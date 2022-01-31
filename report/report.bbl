@@ -147,5 +147,16 @@
     \endverb
     \field{year}{2015}
   \endentry
+
+  \entry{docscipyopt}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{title}{Scipy Optimization and root finding}
+    \verb{url}
+    \verb https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.m
+    \verb inimize.html
+    \endverb
+  \endentry
 \enddatalist
 \endinput

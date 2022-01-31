@@ -184,10 +184,86 @@
 	The implementation of a Support Vector Machine problem can be either derived from the primal or the dual formulation.
 	
 	\textbf{Primal Formulation - Hard Margin}\\
+	The problem of computing the \textit{maximum-margin hyperplane} exploiting \textit{support vectors} (samples from either class on the "gutter" that separates the two classes) can be formulated as follows:\\
+	\begin{align}
+		\min_{w,b} |w| &&
+		\text{s.t.}\ \ y_i(w^Tx-b)\ge 1
+	\end{align} 
+	Where $\mathbf{y_i =\pm 1}$ is the label of the class corresponding to sample $\mathbf{x}$.\\
+	
+	\begin{figure}[H]
+		\hspace{120pt}\includegraphics[scale=0.2]{exp1_legend}
+		\caption{3d scatteplot of rock and blues samples}
+	\end{figure}
+	
+	Unfortunately, our samples are not linearly separable using a hard-margin, so this basic form of classification was not chosen.\newline
+	
 	\textbf{Primal Formulation - Soft Margin}\\
+	The soft-margin formulation involves the usage of the \textbf{hingeloss} function, which makes the optimization problem become
+	
+	\begin{align}
+		\min_{w,b}\ \ \ \dfrac {1}{n} \sum_{i=1}^n{\max{\Big(0,1-y_i(w^Tx-b)\Big)}}
+	\end{align}
+
+	The optimization problem is unconstrained, which enables us to apply \textit{Gradient Descent} method, particularly appropriate considering the convexity of the function. Most soft-margin implementations also feature a \textit{penalization} term, but in our implementation such parameter ended up decreasing the accuracy. Hence, we decided to remove it.
+	
+	\begin{figure}[H]
+		\hspace{20pt}\includegraphics[scale=0.5]{gd1}
+		\caption{Gradient Descent hingeloss history on rock/classical margin}
+	\end{figure}
+	\begin{figure}[H]
+		\includegraphics[scale=0.4]{plane1}
+		\includegraphics[scale=0.4]{plane1_side}
+		\caption{Plots of the hyperplane corresponding to the optimal parameters (two different rotations of the point of view)}
+	\end{figure}
+
 	\textbf{Primal Formulation - Soft Margin with Feature Map}\\
+	Before trying the dual formulation, which allows the usage of the Kernel Trick for non-linear classification margins, we tried a simple quadratic \textit{feature map} to be applied to the primal formulation. This way, the three samples (ZCR, average energy and silent ratio) are mapped to a higher dimensional feature space.
+	\begin{align}
+		\phi(x_1, x_2, x_3) &= \begin{bmatrix}
+			x_1 \ \ \
+			x_2 \ \ \
+			x_3 \ \ \
+			x_1^2 \ \ \
+			x_2^2 \ \ \
+			x_3^2 \ \ \
+			x_1x_2 \ \ \
+			x_2x_3 \ \ \
+			x_1x_3
+		\end{bmatrix} ^T
+	\end{align}
+
+	\begin{figure}[H]
+		\includegraphics[scale=0.4]{quad_feat}
+		\includegraphics[scale=0.4]{quad_feat_side}
+		\caption{Plots of the non-linear margin corresponding to the optimal parameters (two different rotations of the point of view)}
+	\end{figure} \newpage
+	
 	\textbf{Dual Formulation - Linear Margin}\\
+	The dual formulation of the SVM is easily obtained from the soft-margin primal formulation by using \textit{Lagrangian Multipliers...}
+	\begin{align}
+		\max_{c1,\dots, c_n}\ \ \ \sum_{i=1}^n{c_i} - \dfrac 1 2 \sum_{i=1}^n{\sum_{j=1}^n{c_i c_j y_i y_j x_i^Tx_j}} &&
+		\nonumber \text{s.t.} \ \ \sum_{i=1}^n{c_iy_i} = 0\ \ \ \land \ \ c_i \ge 0
+	\end{align}
+	This time the optimization problem is constrained, so we had to use a \textit{Quadratic Programming} library available for python. We ended up using \textit{scipy.optimize}. Since the only constraint on the decision variable is linear, the computation of an iteration did not require the hessian, which was hardcoded to zero. The parameters of the optimization were method='trust-constr' (constrained minimization of scalar function) and jac='2-point' which enables the calculation of the jacobian of the constraint using finite differences \cite{docscipyopt}. Of course, since the dual formulation is a maximization problem, the objective function has to be multiplied by $\mathbf{-1}$ before being fed to the \textit{scipy.optimize.minimize} method.\\
+	
+	After running the computation, weights and bias can be derived from the following expressions
+	
+	\begin{align}
+		w = \sum_{i=1}^n{c_iy_ix_i}&&
+		b = w^Tx-y_i \ \ \text{for any } i\ \text{such that}\ x_i\ \ \text{lies on the margin}\  (c_i>0)
+	\end{align}
+	
 	\textbf{Dual Formulation - Kernel Trick}\\
+	The kernel trick can intuitively be applied to the objective function by replacing the dot product of two samples $\mathbf{x_i^Tx_j}$ with the kernel function $\mathbf{K(x_i,x_j)}$. The choice of the kernel function itself, unfortunately, was constrained by the performance of its computation. While a polynomial kernel was fast due to the matrix optimizations of \textit{numpy}, a gaussian kernel was found expensive. The following kernel had the best results in terms of classification accuracy:
+	\begin{align}
+		K(x_i,x_j)=(x_i^Tx_j+1)^3
+	\end{align}
+	The computation of the weights (multiplied by the kernel) and the bias is as follows:
+	\begin{align}
+		w_j^\phi = \sum_{i=1}^n{c_iy_iK(x_j,x_i)}&&
+		b = w^\phi_i-y_i \ \ \text{for any } i\ \text{such that}\ x_i\ \ \text{lies on the margin}\  (c_i>0)
+	\end{align}
 	\subparagraph{One-To-Rest Classifier}\mbox{}\\\newline
 	\subparagraph{One-To-One Classifier}\mbox{}\\\newline
 	
