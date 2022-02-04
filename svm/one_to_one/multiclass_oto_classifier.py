@@ -47,9 +47,9 @@ class MulticlassSVM:
 
         N_genres = len(self.active_genres)
 
-        confusion_mat = np.zeros((N_genres, N_genres))
+        confusion_mat = np.zeros((10, 10))
 
-        for test_index in range(allowed_samples.size):
+        for test_index in range(sub_labels.size):
             sample = sub_data[test_index, :]
             label = sub_labels[test_index]
 
