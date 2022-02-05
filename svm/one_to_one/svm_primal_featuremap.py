@@ -1,4 +1,4 @@
-from svm.one_to_one.svm_classifier import *
+from svm.one_to_one.svm_oto_classifier import *
 import numpy as np
 
 genre_names = ['blues', 'classical', 'country', 'disco', 'hipop', 'jazz', 'metal', 'pop', 'reggae', 'rock']
