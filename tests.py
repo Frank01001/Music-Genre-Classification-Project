@@ -30,9 +30,9 @@ dataset_valid = dataset[indices_valid, :]
 labels_train = labels[indices_train]
 labels_valid = labels[indices_valid]
 
-test_classifier = MulticlassSVM(genre_names, PrimalFeatureMapClassifier)
+test_classifier = MulticlassSVM_OTO(genre_names, PrimalFeatureMapClassifier)
 test_classifier.train_all(dataset_train, labels_train)
 
 conf_mat = test_classifier.confusion_matrix(dataset_valid, labels_valid)
 print(conf_mat)
-print(MulticlassSVM.accuracy_from_matrix(conf_mat))
+print(MulticlassSVM_OTO.accuracy_from_matrix(conf_mat))

@@ -4,7 +4,7 @@ import numpy as np
 genre_names = ['blues', 'classical', 'country', 'disco', 'hipop', 'jazz', 'metal', 'pop', 'reggae', 'rock']
 
 
-class PrimalLinearClassifier(SVMClassifier):
+class PrimalLinearClassifier(SVMClassifier_OTO):
   def __init__(self, genre1, genre2):
     super().__init__(genre1, genre2)
     self.w = np.random.randn(3)

@@ -3,7 +3,7 @@ from svm.one_to_one.svm_primal_linear import *
 from svm.one_to_one.svm_primal_featuremap import *
 
 
-class MulticlassSVM:
+class MulticlassSVM_OTO:
     def __init__(self, genre_list, classifier_type : type):
         self.active_genres = genre_list.copy()
 
@@ -62,7 +62,7 @@ class MulticlassSVM:
 
     def compute_accuracy(self, input_data, input_labels):
         conf_mat = self.confusion_matrix(input_data, input_labels)
-        return MulticlassSVM.accuracy_from_matrix(conf_mat)
+        return MulticlassSVM_OTO.accuracy_from_matrix(conf_mat)
 
     # Utils
     @staticmethod

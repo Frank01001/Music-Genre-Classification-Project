@@ -1,7 +1,7 @@
 from abc import abstractmethod
 
 
-class SVMClassifier:
+class SVMClassifierOTR:
   def __init__(self, genre):
     self.genre = genre # Corresponds to SVM label 1
 
