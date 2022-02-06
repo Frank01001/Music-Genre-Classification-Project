@@ -28,10 +28,10 @@
 	\newpage
 	\section{Introduction}
 	\paragraph{Scope}\mbox{}\\\newline
-	The scope of this project is to create a music genre classifier using the machine learning algorithms \textit{k-Nearest Neighbours} and \textit{Multiclass SVM}, which were assigned to our group. The project is part of the evaluation of the “Numerical Analysis for Machine Learning” course, which is part of the first semester of the first year of Master’s Degree in Computer Science and Engineering at Politecnico di Milano. Given the similarities between \textit{k-Nearest Neighbours} and \textit{Nearest Centroid}, we chose to implement the latter as well, comparing its performance to the former, even though it is outside the specification of the project.\\ 
+	The scope of this project is to create a music genre classifier using two machine learning methods: \textit{k-Nearest Neighbours} and \textit{Multiclass SVM}, which were assigned to our group. The project is part of the evaluation of the “Numerical Analysis for Machine Learning” course, taught in the first semester of the first year of Master’s Degree in Computer Science and Engineering at Politecnico di Milano. Given the similarities between \textit{k-Nearest Neighbours} and \textit{Nearest Centroid}, we chose to implement the latter as well, comparing its performance to the former, even though it is outside the specification of the project.\\ 
 	
 	\paragraph{The Dataset}\mbox{}\\\newline
-	The dataset assigned to our project is the notorious \textit{GTZAN Genre Collection}\cite{marsyas}, which contains 100 different extracts from 10 different music genres, provided in .wav (Waveform Audio File Format). The genres considered are: 
+	The dataset assigned to our project is the notorious \textit{GTZAN Genre Collection}\cite{marsyas}, which contains 100 different extracts from 10 different music genres. The dataset genres are: 
 	
 	\begin{itemize}
 		\item Blues 
@@ -46,9 +46,9 @@
 		\item Rock 
 	\end{itemize}
 
-	As it can be seen, genres that share similarities are included in the dataset (e.g. Blues and Jazz), but also dramatically different types of music such as Rock and Classical, which we expect the algorithms to classify with higher precision.
+	As it can be seen, genres that share similarities are included in the dataset (e.g. Blues and Jazz), but also dramatically different types of music such as Rock and Classical, which we expect the algorithms to distinguish with higher precision.
 	
-	The dataset provides audio samples as \textit{.wav} files. WAV is the most common uncompressed audio file format in Microsoft Windows systems. It was developed by IBM and Microsoft, for storing an audio bitstream on PCs\cite{wave}.\\
+	The dataset provides audio samples as \textit{.wav} files (\textit{Waveform Audio File Format}). WAV is the most common uncompressed audio file format in Microsoft Windows systems. It was developed by IBM and Microsoft, for storing an audio bitstream on PCs\cite{wave}.\\
 	
 	\begin{figure}[H]
 		\hspace{100pt}\includegraphics[scale=0.7]{waveform}
@@ -56,7 +56,7 @@
 	\end{figure}
 	
 	
-	This kind of files are managed in Python by using the \textit{wave} module, which provides convenient functions to work with the WAV sound format. In our case, the audio samples are provided as 22050Hz Mono 16-bit 30 second tracks\cite{marsyas}, which are easily transformed into a numpy array of \textit{int16}.\\
+	This file format can be imported in \textit{Python} by using the \textit{wave} module, which provides convenient functions to work with the WAV sound format. In our case, the audio samples are provided as 22050Hz Mono 16-bit 30 second tracks\cite{marsyas}, which are easily transformed into a numpy array of \textit{int16}.\\
 	The picture above is the result of the following code:
 	\begin{lstlisting}[language=Python]
 		import wave
@@ -78,10 +78,10 @@
 	\newpage
 	
 	\paragraph{Feature Extraction}\mbox{}\\\newline
-	For what concerns the features required to classify the genres, our first choice was the triplet \textit{Zero Crossing Rate}, \textit{Average Energy} and \textit{Silent Ratio} as defined in one of the papers provided by the project specification \cite{comparison}. The extracted features were collected and exported in a csv file to avoid having to extract the feature multiple times, as the complete process took approximately 45 minutes on \textit{Google Colab}.\\
+	For what concerns the features required to classify the genres, our first choice was the feature triplet of \textit{Zero Crossing Rate}, \textit{Average Energy} and \textit{Silent Ratio} as defined in one of the papers provided by the project specification \cite{comparison}. The extracted features were collected and exported in a csv file to avoid having to extract the feature multiple times, as the complete process took approximately 45 minutes on \textit{Google Colab}.\\
 	
 	\textbf{Zero Crossing Rate}\\
-	It indicates the frequency of signal amplitude sign change, which is in some way related to the average signal frequency. In practice, it is a key feature to classify percussive sounds as it's often correlated with the beat. ZCR records how many waves have passed for a certain time, by giving a positive amplitude a positive value (1) and a negative amplitude a negative value (-1). The implemented formula is as follows:
+	It indicates the frequency of signal amplitude sign change, which is in some way related to the average signal frequency. In practice, it is a key feature to classify percussive sounds as it's often correlated with the beat. ZCR records how many waves have passed for a certain time, by averaging the sign changes in the signal amplitude. The implemented formula is as follows:
 	
 	\begin{equation}
 		\text{ZCR}=\dfrac{\sum_{n=1}^N{\bigg|\text{sgn}\ x(n)-\text{sgn}\ x(n-1)\bigg|}}{2N}
@@ -166,18 +166,54 @@
 		\caption{Mel-Frequency Cepstral Coefficents spectrogram of \textit{blues.00000.wav}}
 	\end{figure}
 	
-	Given that the resulting MFCCs of the signal are returned in a matrix with rows corresponding to the 13 coefficients and columns corresponding to all windows of the original signal, we chose to keep the mean and the variance of each MFCC across the signal as a feature for classification.
+	Given that the resulting MFCCs of the signal are returned in a matrix with rows corresponding to the 13 coefficients and columns corresponding to all windows of the original signal, giving a dynamic representation of the signal, we had to make a choice to extract static features for our classifier. We first tried averaging the coefficients across all windows, but their correlation was too high. In the end we noticed that picking coefficients from a random window of the song extract gave us a solid feature set with low enough correlation for the classifier to perform in a satisfactory manner.
 	
-	Librosa also allows for the computation of local estimates of n-order derivatives for MFCCs using the \textit{librosa.feature.delta} function. Mean and variance of this such features (namely order 1 and 2) have also been kept for the classifier.
+	Librosa also allows for the computation of local estimates of n-order derivatives for MFCCs using the \textit{librosa.feature.delta} function. We also included these features (namely order 1 and 2 deltas) from the same random window as the coefficients. 
 	
 	A specific Jupyter Notebook named \textit{NAML Project Mel-frequency cepstrum.ipynb} handles the visualization and generation of the MFCC data for the dataset assigned to this project (the exported feature set is called \textit{mfcc\_dataset.csv}).
 	
 	\newpage
 	
 	\section{Classifiers}
-	\paragraph{k-Nearest Neighbours Classifier}\mbox{}\\\newline
-	In this section it will be explained which methodologies have been used to implement the music genre classifier and how the code has been structure to achieve the results exposed at the end of the report 
-	\paragraph{Nearest Centroid Classifier}\mbox{}\\\newline
+	\paragraph{Distance Based Methods}
+	In this paragraph we will explore the classifiers using the feature triplet (ZCR, Avg. Energy and Silent Ratio) using \textit{k-Nearest Neighbours} and \textit{Nearest Centroid}. The performance of both classifiers has been evaluated for different subsets of genres and using the following three distance functions ($\mathit{x}$ is the current sample, $\mathit{y}$ is the current centroid / training sample):
+	\begin{itemize}
+		\item \textbf{Euclidean Distance}:\\
+		\begin{align}
+			d(x,y)=\sqrt{\sum_{i=1}^n{(y_i-x_i)^2}}
+		\end{align}
+		\item \textbf{Manhattan Distance}:\\
+		\begin{align}
+			d(x,y)=\sum_{i=1}^n{\big|y_i-x_i\big|}
+		\end{align}
+		\item \textbf{Chebyshev Distance}:\\
+		\begin{align}
+			d(x,y)=\max_i{\big|y_i-x_i\big|}
+		\end{align}
+	\end{itemize}
+	\mbox{}\newpage
+	\subparagraph{k-Nearest Neighbours Classifier}\mbox{}\\\newline
+	The implementation of the \textit{k-Nearest Neighbours Classifier} was developed and tested in the jupyter notebook \textit{NAML\_Project\_k\_Nearest\_Neighbours.ipynb} and was later ported to a standalone python script to be callable as a module (/knn/k\_nearest\_neighbours\_classifier.py). 
+	\begin{figure}[H]
+		\hspace{70pt}\includegraphics[scale=0.5]{knn_acc}
+		\caption{Accuracy table for k-Nearest Neighbours}
+	\end{figure}
+	\newpage
+	\subparagraph{Nearest Centroid Classifier}\mbox{}\\\newline
+	The implementation of the \textit{Nearest Centroid Classifier} is straightforward enough. It was developed and tested in the jupyter notebook \textit{NAML\_Project\_Nearest\_Centroid.ipynb} and was later ported to a standalone python script to be callable as a module (/nearest\_centroid/nearest\_centroid\_classifier.py). 
+	To determine the centroid for each class, the training set is filtered and the mean of each feature is computed. A list called \textit{centroids} collects the centroid vectors after their computation.
+	
+	\begin{figure}[H]
+		\hspace{50pt}\includegraphics[scale=0.4]{centroids_plot}
+		\caption{3d scatterplot of class centroids}
+	\end{figure}
+
+	To classify the genre given the input and the possible genres to classify to, the algorithm determines the closest centroid among the available ones using the distance function passed as a parameter in the \textit{classify function}. Here are the resulting classification accuracies:
+	\begin{figure}[H]
+		\hspace{70pt}\includegraphics[scale=0.5]{nc_acc}
+		\caption{Classification accuracy for each distance/genre set}
+	\end{figure}
+	
 	\paragraph{Multiclass SVM Classifiers}\mbox{}\\\newline
 	The implementation of a \textit{Support Vector Machine} classifier can be accomplished in a variety of different ways. To explore them before moving to the full Multiclass application, we created a Jupyter Notebook called \textit{NAML\_Project\_Experiments.ipynb}. After testing the binary classification performance, we adapted the code for the multi-class case, exploring both the \textit{One-To-Rest} strategy and the \textit{One-To-One} strategy.
 	\subparagraph{Building Blocks}\mbox{}\\\newline
@@ -193,7 +229,7 @@
 	
 	\begin{figure}[H]
 		\hspace{120pt}\includegraphics[scale=0.2]{exp1_legend}
-		\caption{3d scatteplot of rock and blues samples}
+		\caption{3d scatterplot of rock and blues samples}
 	\end{figure}
 	
 	Unfortunately, our samples are not linearly separable using a hard-margin, so this basic form of classification was not chosen.\newline

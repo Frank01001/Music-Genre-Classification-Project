@@ -14,14 +14,16 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}Classifiers}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{k-Nearest Neighbours Classifier}{9}{}%
+\contentsline {paragraph}{Distance Based Methods}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Nearest Centroid Classifier}{9}{}%
+\contentsline {subparagraph}{k-Nearest Neighbours Classifier}{10}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Multiclass SVM Classifiers}{9}{}%
+\contentsline {subparagraph}{Nearest Centroid Classifier}{11}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Building Blocks}{9}{}%
+\contentsline {paragraph}{Multiclass SVM Classifiers}{12}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{One-To-Rest Classifier}{12}{}%
+\contentsline {subparagraph}{Building Blocks}{12}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{One-To-One Classifier}{12}{}%
+\contentsline {subparagraph}{One-To-Rest Classifier}{15}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{One-To-One Classifier}{15}{}%
