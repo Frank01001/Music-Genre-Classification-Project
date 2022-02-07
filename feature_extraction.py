@@ -11,7 +11,6 @@ def zero_crossing_rate(signal):
         ZCR += np.absolute(sign[i] - sign[i-1])
     return ZCR/(2*sign.size)
 
-
 def average_energy(signal):
     return np.mean(signal ** 2)
 
@@ -55,4 +54,4 @@ def create_dataset():
     featurearr = np.array(featurelist).reshape(len(featurelist)//4, 4)
     df = pd.DataFrame(featurearr, columns=['ZCR', 'AVERAGE_ENERGY', 'SILENT_RATIO', 'CLASS'])
     df.to_csv('test_dataset.csv')
-
+    return

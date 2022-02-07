@@ -6,7 +6,7 @@ class SVMClassifierOTR:
     self.genre = genre # Corresponds to SVM label 1
 
   @abstractmethod
-  def bin_classify(self, input):
+  def classify_isgenre(self, input):
     pass
 
   @abstractmethod
