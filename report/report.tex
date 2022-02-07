@@ -20,7 +20,7 @@
 		\large{k-Nearest Neighbours\\ Nearest Centroid\\ Multiclass SVM}\\
 		\date{February 2022}
 		\large{-\\}
-		\large{by Silvia Marino (codice persona) and Francesco Panebianco (10632465)\\}
+		\large{by Silvia Marino (10688672) and Francesco Panebianco (10632465)\\}
 		\small{DEIB - Politecnico di Milano}
 	}
 	\maketitle
@@ -220,7 +220,7 @@
 	The implementation of a Support Vector Machine problem can be either derived from the primal or the dual formulation.
 	
 	\textbf{Primal Formulation - Hard Margin}\\
-	The problem of computing the \textit{maximum-margin hyperplane} exploiting \textit{support vectors} (samples from either class on the "gutter" that separates the two classes) can be formulated as follows:\\
+	The problem of computing the \textit{maximum-margin hyperplane} exploiting \textit{support vectors} (samples from either class lying on the "gutter" that separates the two classes) can be formulated as follows:\\
 	\begin{align}
 		\min_{w,b} |w| &&
 		\text{s.t.}\ \ y_i(w^Tx-b)\ge 1
@@ -232,7 +232,7 @@
 		\caption{3d scatterplot of rock and blues samples}
 	\end{figure}
 	
-	Unfortunately, our samples are not linearly separable using a hard-margin, so this basic form of classification was not chosen.\newline
+	Unfortunately, our samples are not linearly separable using a hard-margin, so this basic form of classification was not chosen.\newpage
 	
 	\textbf{Primal Formulation - Soft Margin}\\
 	The soft-margin formulation involves the usage of the \textbf{hingeloss} function, which makes the optimization problem become
@@ -244,7 +244,7 @@
 	The optimization problem is unconstrained, which enables us to apply \textit{Gradient Descent} method, particularly appropriate considering the convexity of the function. Most soft-margin implementations also feature a \textit{penalization} term, but in our implementation such parameter ended up decreasing the accuracy. Hence, we decided to remove it.
 	
 	\begin{figure}[H]
-		\hspace{20pt}\includegraphics[scale=0.5]{gd1}
+		\hspace{25pt}\includegraphics[scale=0.44]{gd1}
 		\caption{Gradient Descent hingeloss history on rock/classical margin}
 	\end{figure}
 	\begin{figure}[H]
@@ -273,7 +273,7 @@
 		\includegraphics[scale=0.4]{quad_feat}
 		\includegraphics[scale=0.4]{quad_feat_side}
 		\caption{Plots of the non-linear margin corresponding to the optimal parameters (two different rotations of the point of view)}
-	\end{figure} \newpage
+	\end{figure}
 	
 	\textbf{Dual Formulation - Linear Margin}\\
 	The dual formulation of the SVM is easily obtained from the soft-margin primal formulation by using \textit{Lagrangian Multipliers...}
@@ -301,7 +301,53 @@
 		b = w^\phi_i-y_i \ \ \text{for any } i\ \text{such that}\ x_i\ \ \text{lies on the margin}\  (c_i>0)
 	\end{align}
 	\subparagraph{One-To-Rest Classifier}\mbox{}\\\newline
-	\subparagraph{One-To-One Classifier}\mbox{}\\\newline
+	The implementation and testing of this  classifier was done in \textit{Google Colab} on the \textit{NAML\_Project\_Multiclass\_OneTORest.ipynb} and was later ported to a python module for further usage. After having tested all the previously presented methods we noticed that the one that provided the best results was the
+	one that used \textit{Kernel Trick with Dual Formulation}, meanwhile the other two methods were implemented instead for the One-To-One classifier.
+	Even in this case, due to long execution
+	time on \textit{Google Colab} (around 15 minutes), the training results were exported in 3 \textit{.csv files} and then used by the classifier for the
+	classification and the separation of the training set from the validation set. Here we introduce the results accomplished by this type of classifier:
+	\begin{figure}[H]
+		\hspace{70pt}\includegraphics[scale=0.5]{svm_otr_acc}
+		\caption{Classification accuracy for each genre set}
+	\end{figure}
+	Each binary classifier checks if the input passed belongs to a specific genre or not. Specifically, it calculates a “score” that it’s positive if, for the classifier, the input belongs to the genre considered, and negative otherwise.
 	
+	The multiclass classification uses the one-to-rest classification to retrieve the higher score of all the genres among the ones considered during the construction of the multiclass classifier.
+	\newpage
+	\subparagraph{One-To-One Classifier}\mbox{}\\\newline
+	The implementation of the One-To-One classifier was done directly in \textit{PyCharm} to better exploit debugging tools in the implementation of the object oriented architecture of the module.
+	
+	Since the One-To-One classifier compares one genre to another, we decided to choose the actual predicted class using a \textbf{Binary Decision Tree}, which was implemented in a separate class using recursive algorithms. The amount of binary classifiers required for the multiclass problem of a given subset of $\mathit{n}$ genres is
+	\begin{align}
+		\text{\# classifiers} = \binom{n}{2} = \frac{n!}{2!(n-2)!}
+	\end{align}
+
+	Since the maximum number of genres to classify is 10, the maximum number of binary classifiers to be instantiated is 45.
+	
+	Once the class \textit{MulticlassSVM\_OTO} is instantiated, the \_\_init\_\_() method creates all combinations of classifiers and then recursively generates a binary decision tree, assigning a binary classifier to each node.
+	\begin{figure}[H]
+		\hspace{70pt}\includegraphics[scale=0.44]{decision_tree}
+		\caption{Truncated example of decision tree as generated upon instantiation of DecisionBinaryTree}
+	\end{figure}
+	\newpage
+	
+	\paragraph{Classification with MFCCs}\mbox{}\\
+	Once the implementation of the classifiers with the feature triplet was completed, we started working with the same classifiers changing the feature set to the extracted MFCCs. All MFCC classifiers were implemented and tested on \textit{Google Colab} as jupyter notebook \textit{MFCC\_PCA.ipynb}. As the name of the notebook suggests, we were sure the usage of all 39 features without processing would have been redundant, so we started with a \textit{Principal Component Analysis} on the data.
+	
+	\begin{figure}[H]
+		\hspace{70pt}\includegraphics[scale=0.44]{mfcc_pca}
+		\caption{Results of the Principal Component Analysis performed on the MFCC dataset}
+	\end{figure}
+
+	From the plots, it is evident that around 10 principal components provide more than enough of the variance of the original data to be used for classification.
+	
+	The accuracies for each technique are as follow:
+	\begin{figure}[H]
+		\hspace{120pt}\includegraphics[scale=0.44]{mfcc_acc}
+		\caption{Accuracies of classification with MFCC principal components}
+	\end{figure}
+	
+	
+	\paragraph{Modules User Guide}\mbox{}
 	\printbibliography
 \end{document}

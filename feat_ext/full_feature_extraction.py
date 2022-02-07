@@ -35,7 +35,7 @@ def normalize_dataset(dataset_path):
 
 def create_dataset():
     featurelist = list()
-    for root, dir, files in os.walk("./genres/"):
+    for root, dir, files in os.walk("../genres/"):
         for k, genre in enumerate(sorted(dir)):
             print('Started genre {} ({})'.format(k, genre))
             for root2, dir2, tracks in os.walk("./genres/" + genre + '/'):
@@ -53,5 +53,5 @@ def create_dataset():
             print('Ended genre {} ({})'.format(k, genre))
     featurearr = np.array(featurelist).reshape(len(featurelist)//4, 4)
     df = pd.DataFrame(featurearr, columns=['ZCR', 'AVERAGE_ENERGY', 'SILENT_RATIO', 'CLASS'])
-    df.to_csv('test_dataset.csv')
+    df.to_csv('new_dataset.csv')
     return

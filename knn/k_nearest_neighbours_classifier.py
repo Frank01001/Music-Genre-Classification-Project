@@ -28,7 +28,7 @@ class kNearestNeighboursClassifier:
             # Keeping the number value of the genre currently considered
             class_curr = genre_names.index(genre_name)
 
-            # Here we extract the features of the training set that belong to the genre previously calculated
+            # Here we extract the feat_ext of the training set that belong to the genre previously calculated
             # (the field class is then removed)
             analyzing_data = self.training_set[self.training_labels == class_curr, :]
 

@@ -26,4 +26,8 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{One-To-Rest Classifier}{15}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{One-To-One Classifier}{15}{}%
+\contentsline {subparagraph}{One-To-One Classifier}{16}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Classification with MFCCs}{17}{}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Modules User Guide}{18}{}%

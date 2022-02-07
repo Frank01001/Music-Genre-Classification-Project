@@ -1,7 +1,7 @@
 from svm.one_to_rest.multiclass_otr_classifier import *
 
 # Dataset import
-data = pd.read_csv('extracted_dataset.csv')
+data = pd.read_csv('../extracted_dataset.csv')
 
 # Dataset normalization
 data_mean = data.mean()

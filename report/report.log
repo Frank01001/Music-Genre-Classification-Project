@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.17)  6 FEB 2022 23:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.17)  7 FEB 2022 18:52
 entering extended mode
 **./report.tex
 (report.tex
@@ -795,22 +795,12 @@ File: ./pictures//exp1_legend.png Graphic file (type png)
 <use ./pictures//exp1_legend.png>
 Package pdftex.def Info: ./pictures//exp1_legend.png  used on input line 231.
 (pdftex.def)             Requested size: 226.84348pt x 133.69713pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
-
- []
-
 [12 <./pictures//exp1_legend.png>]
 <./pictures//gd1.png, id=71, 972.63374pt x 482.80376pt>
 File: ./pictures//gd1.png Graphic file (type png)
 <use ./pictures//gd1.png>
 Package pdftex.def Info: ./pictures//gd1.png  used on input line 247.
-(pdftex.def)             Requested size: 486.31567pt x 241.40129pt.
-
-Overfull \hbox (5.83168pt too wide) in paragraph at lines 247--248
-[] [] 
- []
-
+(pdftex.def)             Requested size: 427.96016pt x 212.43431pt.
 <./pictures//plane1.png, id=72, 680.5425pt x 336.0555pt>
 File: ./pictures//plane1.png Graphic file (type png)
 <use ./pictures//plane1.png>
@@ -844,51 +834,71 @@ Overfull \hbox (3.43109pt too wide) in paragraph at lines 273--275
 [][] [] 
  []
 
-[14 <./pictures//quad_feat.png> <./pictures//quad_feat_side.png>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 283--285
 
  []
 
+[14 <./pictures//quad_feat.png> <./pictures//quad_feat_side.png>]
+<./pictures//svm_otr_acc.png, id=88, 647.41875pt x 141.52875pt>
+File: ./pictures//svm_otr_acc.png Graphic file (type png)
+<use ./pictures//svm_otr_acc.png>
+Package pdftex.def Info: ./pictures//svm_otr_acc.png  used on input line 310.
+(pdftex.def)             Requested size: 323.70857pt x 70.76419pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--304
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 303--304
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 304--305
+Underfull \hbox (badness 10000) in paragraph at lines 303--312
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 304--305
+Overfull \hbox (133.46289pt too wide) in paragraph at lines 303--312
+\OT1/cmr/m/n/12 The im-ple-men-ta-tion and test-ing of this clas-si-fier was do
+ne in \OT1/cmr/m/it/12 Google Co-lab \OT1/cmr/m/n/12 on the \OT1/cmr/m/it/12 NA
+ML[]Project[]Multiclass[]OneTORest.ipynb
+ []
+
+[15 <./pictures//svm_otr_acc.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 317--319
 
  []
 
-[15]
-Overfull \hbox (0.65605pt too wide) in paragraph at lines 307--307
+<./pictures//decision_tree.png, id=93, 816.04875pt x 364.36125pt>
+File: ./pictures//decision_tree.png Graphic file (type png)
+<use ./pictures//decision_tree.png>
+Package pdftex.def Info: ./pictures//decision_tree.png  used on input line 329.
+
+(pdftex.def)             Requested size: 359.06256pt x 160.31944pt.
+[16 <./pictures//decision_tree.png>]
+<./pictures//mfcc_pca.png, id=98, 715.67375pt x 1138.2525pt>
+File: ./pictures//mfcc_pca.png Graphic file (type png)
+<use ./pictures//mfcc_pca.png>
+Package pdftex.def Info: ./pictures//mfcc_pca.png  used on input line 338.
+(pdftex.def)             Requested size: 314.89742pt x 500.83266pt.
+<./pictures//mfcc_acc.png, id=99, 567.3195pt x 397.485pt>
+File: ./pictures//mfcc_acc.png Graphic file (type png)
+<use ./pictures//mfcc_acc.png>
+Package pdftex.def Info: ./pictures//mfcc_acc.png  used on input line 346.
+(pdftex.def)             Requested size: 249.62135pt x 174.89394pt.
+ [17 <./pictures//mfcc_pca.png>]
+Overfull \hbox (0.65605pt too wide) in paragraph at lines 353--353
 []\OT1/cmr/m/it/12 Scipy Op-ti-miza-tion and root find-ing\OT1/cmr/m/n/12 . \OT
 1/cmr/m/sc/12 url\OT1/cmr/m/n/12 : $\OT1/cmtt/m/n/12 https : / / docs . scipy .
  org / doc / scipy / reference /
  []
 
-[16] (report.aux)
+[18 <./pictures//mfcc_acc.png>] (report.aux)
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 13383 strings out of 478927
- 231565 string characters out of 2852534
+ 13427 strings out of 478927
+ 232721 string characters out of 2852534
  907729 words of memory out of 3000000
- 31089 multiletter control sequences out of 15000+600000
+ 31133 multiletter control sequences out of 15000+600000
  414662 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,14n,70p,1860b,1238s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,14n,70p,1860b,1236s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\frapa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1200.pk><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/publ
@@ -907,9 +917,9 @@ public/amsfonts/cm/cmsy10.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/frapa/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/frapa/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (16 pages, 1352626 bytes).
+Output written on report.pdf (18 pages, 1442488 bytes).
 PDF statistics:
- 163 PDF objects out of 1000 (max. 8388607)
+ 176 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 96 words of extra memory for PDF output out of 10000 (max. 10000000)
 

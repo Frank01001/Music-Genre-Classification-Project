@@ -1,7 +1,6 @@
 import wave
-import matplotlib.pyplot as plt
 import numpy as np
-import feature_extraction
+from feat_ext import full_feature_extraction
 import matplotlib.pyplot as plt
 
 # feature_extraction.create_dataset()
