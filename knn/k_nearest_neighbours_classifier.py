@@ -50,7 +50,6 @@ class kNearestNeighboursClassifier:
                             class_dist = np.insert(class_dist, j, class_curr)
                             min_dist = min_dist[0:k]
                             class_dist = class_dist[0:k]
-                            print(min_dist)
                             break
 
         # If the k distances that we have to store are more than one we should count the genres found,
@@ -127,9 +126,9 @@ class kNearestNeighboursClassifier:
         return confusion_matrix
 
     @staticmethod
-    def compute_accuracy(c_mat):
+    def compute_accuracy_from_matrix(c_mat):
         return c_mat.trace() / np.sum(c_mat) * 100.0
 
-    def compute_accuracy(self):
-        conf_mat = self.confusion_matrix()
+    def compute_accuracy(self, dataset_validation, labels_validation):
+        conf_mat = self.confusion_matrix(dataset_validation, labels_validation)
         return kNearestNeighboursClassifier.compute_accuracy(conf_mat)
