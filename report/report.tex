@@ -193,7 +193,8 @@
 	\end{itemize}
 	\mbox{}\newpage
 	\subparagraph{k-Nearest Neighbours Classifier}\mbox{}\\\newline
-	The implementation of the \textit{k-Nearest Neighbours Classifier} was developed and tested in the jupyter notebook \textit{NAML\_Project\_k\_Nearest\_Neighbours.ipynb} and was later ported to a standalone python script to be callable as a module (/knn/k\_nearest\_neighbours\_classifier.py). 
+	The implementation of the \textit{k-Nearest Neighbours Classifier} was developed and tested in the jupyter notebook \textit{NAML\_Project\_k\_Nearest\_Neighbours.ipynb} and was later ported to a standalone python script to be callable as a module (/knn/k\_nearest\_neighbours\_classifier.py).\\
+	We calculate the distances between the input and all the data of the genres previously selected, we store in an array the k minimum distances and the classes to which they belong. If k is greater than one, we count how many are the occurrences of each class present in the k nearest points. In case of a tie, we return the class with the smallest distance.
 	\begin{figure}[H]
 		\hspace{70pt}\includegraphics[scale=0.5]{knn_acc}
 		\caption{Accuracy table for k-Nearest Neighbours}
