@@ -3,13 +3,47 @@ import numpy as np
 genre_names = ['blues', 'classical', 'country', 'disco', 'hipop', 'jazz', 'metal', 'pop', 'reggae', 'rock']
 
 
-class kNearestNeighboursClassifier:
+class kNN_MFCC_Classifier:
     def __init__(self):
-        pass
+        self.test_set_labels = None
+        self.test_set = None
+        self.training_set_labels = None
+        self.training_set = None
+        self.n_principal_components = None
 
-    def train(self, training_set, training_labels):
-        self.training_set = training_set
-        self.training_labels = training_labels
+    '''
+    Since the classifier also performs the PCA, the full dataset is required to train the classifier
+    '''
+    def train(self, dataset, labels, n_principal_components = 10):
+        self.n_principal_components = n_principal_components
+
+        A_mean = np.mean(dataset, axis=0)
+
+        A_norm = dataset - A_mean[None, :]
+
+        U, s, VT = np.linalg.svd(A_norm, full_matrices=False)
+
+        Phi = U @ A_norm.T
+
+        # Separation between test set and training set
+        dataset_size = Phi.shape[0]
+        training_count = int(dataset_size * 0.8)
+
+        indices = list(range(dataset_size))
+        np.random.shuffle(indices)
+
+        training_indices = indices[0:training_count]
+        test_indices = indices[training_count:]
+
+        # Training Set
+        self.training_set = Phi[training_indices, :n_principal_components]
+        # Training Set labels
+        self.training_set_labels = labels[training_indices].astype(int)
+
+        # Test Set
+        self.test_set = Phi[, :n_principal_components]
+        # Test Set labels
+        self.test_set_labels = labels[training_indices].astype(int)
 
     def classify(self, input, genres_to_classify=genre_names, distance=np.linalg.norm, k=1):
         # Inizialization:
@@ -84,7 +118,10 @@ class kNearestNeighboursClassifier:
         else:
             return genre_names[int(class_dist)]
 
-    def confusion_matrix(self, validation_set, validation_labels, genres_to_classify=genre_names, distance=np.linalg.norm, k = 1):
+    '''
+    Validation set is not a parameter since it is selected internally in the train() method
+    '''
+    def confusion_matrix(self, genres_to_classify=genre_names, distance=np.linalg.norm, k = 1):
         confusion_matrix = np.zeros((10, 10))
 
         # Indices of genres to classify
