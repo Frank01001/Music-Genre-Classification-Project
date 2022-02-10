@@ -144,7 +144,7 @@
 	\end{figure}
 
 	\paragraph{Alternative Feature Set: Mel-Frequency Cepstral Coefficients}\mbox{}\\\newline
-	The second paper provided by project specification \cite{classification} mentioned the possibility of using \textit{Mel-Frequency Cepstral Coefficients} as features for music genre classification.
+	The second paper provided by the project specification \cite{classification} mentioned the possibility of using \textit{Mel-Frequency Cepstral Coefficients} as features for music genre classification.
 	
 	The \textbf{Mel-frequency Cepstrum} (MFC) is a representation of the short term power spectrum. The \textbf{Mel-frequency Cepstral Coefficients} (MFCCs) collectively make up an MFC. A Cepstrum is defined as a non-linear spectrum-of-a-spectrum.
 	
@@ -194,7 +194,7 @@
 	\mbox{}\newpage
 	\subparagraph{k-Nearest Neighbours Classifier}\mbox{}\\\newline
 	The implementation of the \textit{k-Nearest Neighbours Classifier} was developed and tested in the jupyter notebook \textit{NAML\_Project\_k\_Nearest\_Neighbours.ipynb} and was later ported to a standalone python script to be callable as a module (/knn/k\_nearest\_neighbours\_classifier.py).\\
-	We calculate the distances between the input and all the data of the genres previously selected, we store in an array the k minimum distances and the classes to which they belong. If k is greater than one, we count how many are the occurrences of each class present in the k nearest points. In case of a tie, we return the class with the smallest distance.
+	We calculate the distances between the input and all the data of the genres previously selected, we then store in an array the k minimum distances and the classes to which they belong. If k is greater than one, we count the occurrences of each class present in the k nearest points. In case of a tie, we return the class with the smallest distance.
 	\begin{figure}[H]
 		\hspace{70pt}\includegraphics[scale=0.5]{knn_acc}
 		\caption{Accuracy table for k-Nearest Neighbours}
@@ -242,7 +242,7 @@
 		\min_{w,b}\ \ \ \dfrac {1}{n} \sum_{i=1}^n{\max{\Big(0,1-y_i(w^Tx-b)\Big)}}
 	\end{align}
 
-	The optimization problem is unconstrained, which enables us to apply \textit{Gradient Descent} method, particularly appropriate considering the convexity of the function. Most soft-margin implementations also feature a \textit{penalization} term, but in our implementation such parameter ended up decreasing the accuracy. Hence, we decided to remove it.
+	The optimization problem is unconstrained, which enables us to apply the \textit{Gradient Descent} method, particularly appropriate considering the convexity of the function. Most soft-margin implementations also feature a \textit{penalization} term, but in our implementation such parameter ended up decreasing the accuracy. Hence, we decided to remove it.
 	
 	\begin{figure}[H]
 		\hspace{25pt}\includegraphics[scale=0.44]{gd1}
@@ -302,8 +302,8 @@
 		b = w^\phi_i-y_i \ \ \text{for any } i\ \text{such that}\ x_i\ \ \text{lies on the margin}\  (c_i>0)
 	\end{align}
 	\subparagraph{One-To-Rest Classifier}\mbox{}\\\newline
-	The implementation and testing of this  classifier was done in \textit{Google Colab} on the \textit{NAML\_Project\_Multiclass\_OneTORest.ipynb} and was later ported to a python module for further usage. After having tested all the previously presented methods we noticed that the one that provided the best results was the
-	one that used \textit{Kernel Trick with Dual Formulation}, meanwhile the other two methods were implemented instead for the One-To-One classifier.
+	The implementation and testing of this  classifier was done in \textit{Google Colab} on the\\ \textit{NAML\_Project\_Multiclass\_OneTORest.ipynb} and was later ported to a python module for further usage. After testing all previously presented methods we noticed that the best results were provided by the
+	classifier that used \textit{Kernel Trick with Dual Formulation}, meanwhile the other two methods were implemented instead for the One-To-One classifier.
 	Even in this case, due to long execution
 	time on \textit{Google Colab} (around 15 minutes), the training results were exported in 3 \textit{.csv files} and then used by the classifier for the
 	classification and the separation of the training set from the validation set. Here we introduce the results accomplished by this type of classifier:
@@ -311,9 +311,9 @@
 		\hspace{70pt}\includegraphics[scale=0.5]{svm_otr_acc}
 		\caption{Classification accuracy for each genre set}
 	\end{figure}
-	Each binary classifier checks if the input passed belongs to a specific genre or not. Specifically, it calculates a “score” that it’s positive if, for the classifier, the input belongs to the genre considered, and negative otherwise.
+	Each binary classifier checks if the input passed belongs to a specific genre or not. Specifically, it calculates a “score” that is positive if the input is classified to belong to the considered genre, and negative otherwise.
 	
-	The multiclass classification uses the one-to-rest classification to retrieve the higher score of all the genres among the ones considered during the construction of the multiclass classifier.
+	To decide which class to return, the one-to-rest classifier retrieves the highest score  among the genres considered during the construction of the multiclass classifier.
 	\newpage
 	\subparagraph{One-To-One Classifier}\mbox{}\\\newline
 	The implementation of the One-To-One classifier was done directly in \textit{PyCharm} to better exploit debugging tools in the implementation of the object oriented architecture of the module.
@@ -329,6 +329,10 @@
 	\begin{figure}[H]
 		\hspace{70pt}\includegraphics[scale=0.44]{decision_tree}
 		\caption{Truncated example of decision tree as generated upon instantiation of DecisionBinaryTree}
+	\end{figure}
+	\begin{figure}[H]
+		\hspace{80pt}\includegraphics[scale=0.6]{svm_oto_acc}
+		\caption{Classification accuracy for each genre set}
 	\end{figure}
 	\newpage
 	
@@ -347,8 +351,10 @@
 		\hspace{120pt}\includegraphics[scale=0.44]{mfcc_acc}
 		\caption{Accuracies of classification with MFCC principal components}
 	\end{figure}
-	
+	Since the accuracy of the classifier using MFCCs does not improve substantially compared to the feature triplet described before, we decided not to port the classification code to standalone python classes.
+	\newpage
 	
 	\paragraph{Modules User Guide}\mbox{}
+	\newpage
 	\printbibliography
 \end{document}

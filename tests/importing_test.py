@@ -10,7 +10,7 @@ signal = select_30sec_extract(signal, sampling_rate=44100)
 zcr, avg_eng, sr = get_feature_triplet(signal)
 sample = np.array([zcr, avg_eng, sr])
 
-data = pd.read_csv('C:\\Users\\frapa\PycharmProjects\\namlProject14-21\\extracted_dataset.csv')
+data = pd.read_csv('C:\\Users\\frapa\\PycharmProjects\\namlProject14-21\\extracted_dataset.csv')
 
 training_set, training_labels, valid_set, valid_labels = get_normalized_train_valid_sets(data)
 
