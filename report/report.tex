@@ -7,6 +7,7 @@
 \usepackage[parfill]{parskip}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{adjustbox}
 \usepackage[style=numeric-comp,useprefix,hyperref,backend=bibtex]{biblatex}
 \definecolor{dark-green}{RGB}{0,175,0}
 \definecolor{dark-red}{RGB}{200,0,0}
@@ -21,7 +22,7 @@
 		\date{February 2022}
 		\large{-\\}
 		\large{by Silvia Marino (10688672) and Francesco Panebianco (10632465)\\}
-		\small{DEIB - Politecnico di Milano}
+		\small{prof. Edie Miglio e Francesco Regazzoni - Politecnico di Milano}
 	}
 	\maketitle
 	\tableofcontents
@@ -84,7 +85,7 @@
 	It indicates the frequency of signal amplitude sign change, which is in some way related to the average signal frequency. In practice, it is a key feature to classify percussive sounds as it's often correlated with the beat. ZCR records how many waves have passed for a certain time, by averaging the sign changes in the signal amplitude. The implemented formula is as follows:
 	
 	\begin{equation}
-		\text{ZCR}=\dfrac{\sum_{n=1}^N{\bigg|\text{sgn}\ x(n)-\text{sgn}\ x(n-1)\bigg|}}{2N}
+		\text{ZCR}=\dfrac{\sum_{n=1}^{N-1}{\bigg|\text{sgn}\ x(n)-\text{sgn}\ x(n-1)\bigg|}}{2N}
 	\end{equation}
 	
 	where sgn $x$ is the \textit{sign function}.\\
@@ -166,7 +167,7 @@
 		\caption{Mel-Frequency Cepstral Coefficents spectrogram of \textit{blues.00000.wav}}
 	\end{figure}
 	
-	Given that the resulting MFCCs of the signal are returned in a matrix with rows corresponding to the 13 coefficients and columns corresponding to all windows of the original signal, giving a dynamic representation of the signal, we had to make a choice to extract static features for our classifier. We first tried averaging the coefficients across all windows, but their correlation was too high. In the end we noticed that picking coefficients from a random window of the song extract gave us a solid feature set with low enough correlation for the classifier to perform in a satisfactory manner.
+	The resulting MFCCs of the signal are returned in a matrix with rows corresponding to the 13 coefficients and columns corresponding to all windows of the original signal. This is a dynamic representation of the signal, but we need to make a choice to extract static features for our classifier. We first tried averaging the coefficients across all windows, but their correlation was too high. In the end we noticed that picking coefficients from a random window of the song extract gave us a solid feature set with low enough correlation for the classifier to perform in a satisfactory manner.
 	
 	Librosa also allows for the computation of local estimates of n-order derivatives for MFCCs using the \textit{librosa.feature.delta} function. We also included these features (namely order 1 and 2 deltas) from the same random window as the coefficients. 
 	
@@ -175,20 +176,30 @@
 	\newpage
 	
 	\section{Classifiers}
-	\paragraph{Distance Based Methods}
-	In this paragraph we will explore the classifiers using the feature triplet (ZCR, Avg. Energy and Silent Ratio) using \textit{k-Nearest Neighbours} and \textit{Nearest Centroid}. The performance of both classifiers has been evaluated for different subsets of genres and using the following three distance functions ($\mathit{x}$ is the current sample, $\mathit{y}$ is the current centroid / training sample):
+	\paragraph{Distance Based Methods}\mbox{}\\
+	In this paragraph we will explore the classifiers using the feature triplet (ZCR, Avg. Energy and Silent Ratio) using \textit{k-Nearest Neighbours} and \textit{Nearest Centroid}. The performance of both classifiers has been evaluated for different subsets of genres and using three different distance functions. Inspiration for the distance functions was taken from a recent computer science project work\cite{distances}. In the following formulas $\mathit{x}$ is the current sample, $\mathit{y}$ is the current centroid / training sample:
 	\begin{itemize}
 		\item \textbf{Euclidean Distance}:\\
 		\begin{align}
 			d(x,y)=\sqrt{\sum_{i=1}^n{(y_i-x_i)^2}}
+			\begin{gathered}
+				\hspace{50 pt}\includegraphics[width=0.2\linewidth]{dist_euclidean}
+			\end{gathered}
 		\end{align}
+
 		\item \textbf{Manhattan Distance}:\\
 		\begin{align}
 			d(x,y)=\sum_{i=1}^n{\big|y_i-x_i\big|}
+			\begin{gathered}
+				\hspace{67 pt}\includegraphics[width=0.2\linewidth]{dist_manhattan}
+			\end{gathered}
 		\end{align}
 		\item \textbf{Chebyshev Distance}:\\
 		\begin{align}
 			d(x,y)=\max_i{\big|y_i-x_i\big|}
+			\begin{gathered}
+				\hspace{67 pt}\includegraphics[width=0.2\linewidth]{dist_cheb}
+			\end{gathered}
 		\end{align}
 	\end{itemize}
 	\mbox{}\newpage
@@ -209,7 +220,7 @@
 		\caption{3d scatterplot of class centroids}
 	\end{figure}
 
-	To classify the genre given the input and the possible genres to classify to, the algorithm determines the closest centroid among the available ones using the distance function passed as a parameter in the \textit{classify function}. Here are the resulting classification accuracies:
+	To classify the genre given the input and the possible genres to classify to, the algorithm determines the closest centroid among the available ones using the distance function passed as a parameter in the \textit{classify} function. Here are the resulting classification accuracies:
 	\begin{figure}[H]
 		\hspace{70pt}\includegraphics[scale=0.5]{nc_acc}
 		\caption{Classification accuracy for each distance/genre set}
@@ -223,7 +234,7 @@
 	\textbf{Primal Formulation - Hard Margin}\\
 	The problem of computing the \textit{maximum-margin hyperplane} exploiting \textit{support vectors} (samples from either class lying on the "gutter" that separates the two classes) can be formulated as follows:\\
 	\begin{align}
-		\min_{w,b} |w| &&
+		\min_{w,b} \Vert w \Vert &&
 		\text{s.t.}\ \ y_i(w^Tx-b)\ge 1
 	\end{align} 
 	Where $\mathbf{y_i =\pm 1}$ is the label of the class corresponding to sample $\mathbf{x}$.\\
@@ -288,7 +299,7 @@
 	
 	\begin{align}
 		w = \sum_{i=1}^n{c_iy_ix_i}&&
-		b = w^Tx-y_i \ \ \text{for any } i\ \text{such that}\ x_i\ \ \text{lies on the margin}\  (c_i>0)
+		b = w^Tx_i-y_i \ \ \text{for any } i\ \text{such that}\ x_i\ \ \text{lies on the margin}\  (c_i>0)
 	\end{align}
 	
 	\textbf{Dual Formulation - Kernel Trick}\\
@@ -302,7 +313,7 @@
 		b = w^\phi_i-y_i \ \ \text{for any } i\ \text{such that}\ x_i\ \ \text{lies on the margin}\  (c_i>0)
 	\end{align}
 	\subparagraph{One-To-Rest Classifier}\mbox{}\\\newline
-	The implementation and testing of this  classifier was done in \textit{Google Colab} on the\\ \textit{NAML\_Project\_Multiclass\_OneTORest.ipynb} and was later ported to a python module for further usage. After testing all previously presented methods we noticed that the best results were provided by the
+	The implementation and testing of this  classifier was done in \textit{Google Colab} on the\\ \textit{NAML\_Project\_Multiclass\_OneToRest.ipynb} and was later ported to a python module for further usage. After testing all previously presented methods we noticed that the best results were provided by the
 	classifier that used \textit{Kernel Trick with Dual Formulation}, meanwhile the other two methods were implemented instead for the One-To-One classifier.
 	Even in this case, due to long execution
 	time on \textit{Google Colab} (around 15 minutes), the training results were exported in 3 \textit{.csv files} and then used by the classifier for the
@@ -313,7 +324,7 @@
 	\end{figure}
 	Each binary classifier checks if the input passed belongs to a specific genre or not. Specifically, it calculates a “score” that is positive if the input is classified to belong to the considered genre, and negative otherwise.
 	
-	To decide which class to return, the one-to-rest classifier retrieves the highest score  among the genres considered during the construction of the multiclass classifier.
+	To decide which class to return, the one-to-rest classifier retrieves the highest score  among the genres considered during initialization.
 	\newpage
 	\subparagraph{One-To-One Classifier}\mbox{}\\\newline
 	The implementation of the One-To-One classifier was done directly in \textit{PyCharm} to better exploit debugging tools in the implementation of the object oriented architecture of the module.
