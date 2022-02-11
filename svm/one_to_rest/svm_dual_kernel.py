@@ -2,7 +2,6 @@ from svm.one_to_rest.svm_otr_classifier import *
 import numpy as np
 import scipy.optimize as opt
 import svm.one_to_rest.OTR_utils as utils
-import jax
 
 genre_names = ['blues', 'classical', 'country', 'disco', 'hipop', 'jazz', 'metal', 'pop', 'reggae', 'rock']
 
@@ -34,10 +33,9 @@ class DualKernelClassifier(SVMClassifierOTR):
     utils.in_data = in_data
 
     a = np.zeros(N)
-    obj_k_jit = jax.jit(utils.obj_kernel)
 
     linear_constraint = opt.LinearConstraint(in_labels, 0, 0, keep_feasible=True)
-    res = opt.minimize(obj_k_jit, a, method='trust-constr', jac='2-point', hess=utils.hessian,
+    res = opt.minimize(utils.obj_kernel, a, method='trust-constr', jac='2-point', hess=utils.hessian,
                        constraints=[linear_constraint], options={'maxiter': 1000},
                        bounds=opt.Bounds(np.zeros(N), np.ones(N) * np.inf))
 
@@ -52,6 +50,8 @@ class DualKernelClassifier(SVMClassifierOTR):
     w_phi = np.sum(np.array([self.c[j] * in_labels[j] * self.kernel_vec(dataset_train[index_non_zero, :], dataset_train[j, :]) for j in range(N)]))
 
     self.b = - in_labels[index_non_zero] + w_phi
+
+    print('%s done' % self.genre)
 
   """
   This method returns 2 objects that are:
