@@ -312,14 +312,15 @@
 		w_j^\phi = \sum_{i=1}^n{c_iy_iK(x_j,x_i)}&&
 		b = w^\phi_i-y_i \ \ \text{for any } i\ \text{such that}\ x_i\ \ \text{lies on the margin}\  (c_i>0)
 	\end{align}
+	\textbf{From binary to multiclass}\\
+	After testing all previously presented methods we noticed that the best results were provided by the
+	classifiers that used \textit{Kernel Trick with Dual Formulation} and \textit{Feature Map with Primal Formulation}, so the first was chosen for the One-To-Rest classifier while the second was implemented in the One-To-One model.
 	\subparagraph{One-To-Rest Classifier}\mbox{}\\\newline
-	The implementation and testing of this  classifier was done in \textit{Google Colab} on the\\ \textit{NAML\_Project\_Multiclass\_OneToRest.ipynb} and was later ported to a python module for further usage. After testing all previously presented methods we noticed that the best results were provided by the
-	classifier that used \textit{Kernel Trick with Dual Formulation}, meanwhile the other two methods were implemented instead for the One-To-One classifier.
+	The implementation and testing of this  classifier was done in \textit{Google Colab} on the\\ \textit{NAML\_Project\_Multiclass\_OneToRest.ipynb} and was later ported to a python module for further usage.
 	Even in this case, due to long execution
-	time on \textit{Google Colab} (around 15 minutes), the training results were exported in 3 \textit{.csv files} and then used by the classifier for the
-	classification and the separation of the training set from the validation set. Here we introduce the results accomplished by this type of classifier:
+	time on \textit{Google Colab} (around 15 minutes), the usage of the standalone python module is discouraged, as it takes way more than 15 minutes to train the model on personal devices:
 	\begin{figure}[H]
-		\hspace{70pt}\includegraphics[scale=0.5]{svm_otr_acc}
+		\hspace{75pt}\includegraphics[scale=0.45]{svm_otr_acc}
 		\caption{Classification accuracy for each genre set}
 	\end{figure}
 	Each binary classifier checks if the input passed belongs to a specific genre or not. Specifically, it calculates a “score” that is positive if the input is classified to belong to the considered genre, and negative otherwise.
@@ -362,7 +363,8 @@
 		\hspace{120pt}\includegraphics[scale=0.44]{mfcc_acc}
 		\caption{Accuracies of classification with MFCC principal components}
 	\end{figure}
-	Since the accuracy of the classifier using MFCCs does not improve substantially compared to the feature triplet described before, we decided not to port the classification code to standalone python classes.
+	Considering the training time for the One-To-Rest classifier is way too long and the classification performance is poor, we did not include it in the MFCC classifiers notebook.
+	Also, given that this alternative feature set does not improve accuracy compared to the feature triplet described before, we decided not to port the classification code to standalone python classes.
 	\newpage
 	
 	\paragraph{Modules User Guide}\mbox{}
