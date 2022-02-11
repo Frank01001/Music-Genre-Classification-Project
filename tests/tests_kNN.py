@@ -1,3 +1,4 @@
+import pandas as pd
 from knn.k_nearest_neighbours_classifier import *
 
 genre_names = ['blues', 'classical', 'country', 'disco', 'hipop', 'jazz', 'metal', 'pop', 'reggae', 'rock']

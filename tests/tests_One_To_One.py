@@ -1,6 +1,5 @@
 from svm.one_to_one.multiclass_oto_classifier import *
 import pandas as pd
-from svm.one_to_rest.multiclass_otr_classifier import *
 from feat_ext.sample_processing import get_normalized_train_valid_sets
 
 genre_names = ['blues', 'classical', 'country', 'disco', 'hipop', 'jazz', 'metal', 'pop', 'reggae', 'rock']

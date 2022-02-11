@@ -6,10 +6,10 @@ class SVMClassifierOTR:
     self.genre = genre # Corresponds to SVM label 1
 
   @abstractmethod
-  def classify_isgenre(self, input):
+  def classify_isgenre(self, input, dataset, labels):
     pass
 
   @abstractmethod
-  def train(self, x, y):
+  def train(self, dataset_train, labels_train):
     pass
 
