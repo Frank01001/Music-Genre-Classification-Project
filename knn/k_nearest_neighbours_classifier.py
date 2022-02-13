@@ -7,6 +7,11 @@ class kNearestNeighboursClassifier:
     def __init__(self):
         pass
 
+    '''
+    Computes the class centroids
+    WARNING: dataset and labels are the COMPLETE dataset, even if you
+    want to classify less than 10 genres
+    '''
     def train(self, training_set, training_labels):
         self.training_set = training_set
         self.training_labels = training_labels

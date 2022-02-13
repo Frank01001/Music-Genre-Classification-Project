@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.17)  11 FEB 2022 18:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.17)  13 FEB 2022 17:00
 entering extended mode
 **./report.tex
 (report.tex
@@ -963,41 +963,101 @@ File: ./pictures//mfcc_acc.png Graphic file (type png)
 <use ./pictures//mfcc_acc.png>
 Package pdftex.def Info: ./pictures//mfcc_acc.png  used on input line 363.
 (pdftex.def)             Requested size: 269.76065pt x 178.33882pt.
- [17 <./pictures//mfcc_pca.png>] [18 <./pictures//mfcc_acc.png>] [19] [20] (rep
-ort.aux)
+ [17 <./pictures//mfcc_pca.png>] [18 <./pictures//mfcc_acc.png>]
+Overfull \hbox (14.16512pt too wide) in paragraph at lines 381--382
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (14.16512pt too wide) in paragraph at lines 390--391
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (28.26509pt too wide) in paragraph at lines 393--394
+[][][][][][][][][][][][][][] 
+ []
+
+[19]
+Overfull \hbox (14.16512pt too wide) in paragraph at lines 437--438
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (35.31508pt too wide) in paragraph at lines 454--456
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (14.16512pt too wide) in paragraph at lines 456--457
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[20]
+Overfull \hbox (14.16512pt too wide) in paragraph at lines 474--475
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (14.16512pt too wide) in paragraph at lines 479--480
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (7.11513pt too wide) in paragraph at lines 490--492
+[][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (14.16512pt too wide) in paragraph at lines 492--493
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 501--504
+
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 533--536
+
+ []
+
+[23] [24] (report.aux)
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 14541 strings out of 478927
- 252647 string characters out of 2852534
- 939544 words of memory out of 3000000
- 32213 multiletter control sequences out of 15000+600000
- 414662 words of font info for 69 fonts, out of 8000000 for 9000
+ 14603 strings out of 478927
+ 253700 string characters out of 2852534
+ 971544 words of memory out of 3000000
+ 32274 multiletter control sequences out of 15000+600000
+ 415039 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,16n,74p,1860b,1438s stack positions out of 5000i,500n,10000p,200000b,80000s
- <C:\Users\frapa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
-1200.pk><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmbx12.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmbx8.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/frapa/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/frapa/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/frapa/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/
-frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C
-:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr1
-2.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmr17.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmr8.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/frapa/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/frapa/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (20 pages, 1496453 bytes).
+ 61i,16n,74p,1860b,1440s stack positions out of 5000i,500n,10000p,200000b,80000s
+ <C:\Users\frapa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti
+1200.pk> <C:\Users\frapa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\tcrm1200.pk><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmbx12.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmbx8.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/frapa/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/frapa/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/frapa/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/fr
+apa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/
+Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.
+pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmr12.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmr17.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmr8.pfb><C:/Users/frapa/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/frapa/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/frapa/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/frapa/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on report.pdf (24 pages, 1512513 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
+ 207 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  116 words of extra memory for PDF output out of 10000 (max. 10000000)
 

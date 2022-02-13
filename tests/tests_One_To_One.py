@@ -5,7 +5,8 @@ from feat_ext.sample_processing import get_normalized_train_valid_sets
 genre_names = ['blues', 'classical', 'country', 'disco', 'hipop', 'jazz', 'metal', 'pop', 'reggae', 'rock']
 
 # Dataset import
-data = pd.read_csv('C:\\Users\\frapa\\PycharmProjects\\namlProject14-21\\extracted_dataset.csv')
+path_to_extracted_dataset = ''
+data = pd.read_csv(path_to_extracted_dataset)
 
 training_set, training_labels, valid_set, valid_labels = get_normalized_train_valid_sets(data)
 

@@ -25,20 +25,12 @@ def silent_ratio(signal):
     return sr / signal.size
 
 
-def normalize_dataset(dataset_path):
-    set = pd.read_csv(dataset_path)
-    set_mean = set.mean()
-    set_std = set.std()
-    return (set - set_mean) / set_std
-
-
-
-def create_dataset():
+def create_dataset(path_to_genres_folder):
     featurelist = list()
-    for root, dir, files in os.walk("../genres/"):
+    for root, dir, files in os.walk(path_to_genres_folder):
         for k, genre in enumerate(sorted(dir)):
             print('Started genre {} ({})'.format(k, genre))
-            for root2, dir2, tracks in os.walk("./genres/" + genre + '/'):
+            for root2, dir2, tracks in os.walk("path_to_genres_folder" + genre + '/'):
                 for track in sorted(tracks):
                     wav_file = wave.open(root2 + track, 'rb')
                     signal = wav_file.readframes(-1)

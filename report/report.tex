@@ -367,7 +367,194 @@
 	Also, given that this alternative feature set does not improve accuracy compared to the feature triplet described before, we decided not to port the classification code to standalone python classes.
 	\newpage
 	
-	\paragraph{Modules User Guide}\mbox{}
+	\paragraph{Modules User Guide}\mbox{}\\
+	In this paragraph we will explain how to use the standalone python modules we developed. Some examples of the usage of the following classes and functions are available in the \textit{tests} folder.
+	
+	\textbf{Feature Extraction Modules}\mbox{}\\
+	- ./feat\_ext/sample\_processing.py
+	
+	\begin{lstlisting}[language=Python]
+	# Used to load a wav audio signal located in path and of
+	# type dtype (e.g. int16, int32, ...)
+	load_audio_signal(path, dtype)
+	
+	# Takes a audio signal and a sample rate returns a 30 sec extract
+	# taken from the center of the signal
+	select_30sec_extract(signal, sampling_rate)
+		
+	# Takes a audio signal and returns the feature triplet
+	# ZCR, avg_energy, silent_ratio as SEPARATE variables
+	get_feature_triplet(signal)
+	
+	
+	# Given a pandas dataframe of the extracted feature sets, returns
+	# dataset_train, labels_train, dataset_valid, labels_valid
+	# (in this exact order)
+	get_normalized_train_valid_sets(data:pd.DataFrame, feature_count=3)
+	\end{lstlisting}
+
+	- ./feat\_ext/full\_feature\_extraction.py
+	
+	\begin{lstlisting}[language=Python]
+	# Given an audio signal, returns its Zero Crossing Rate value
+	zero_crossing_rate(signal)
+		
+	# Given an audio signal, returns its Average Energy value
+	average_energy(signal)
+		
+	# Given an audio signal, returns its Silent Ratio value
+	silent_ratio(signal)
+		
+	# Creates the full feature triplet set for the GTZAN dataset
+	# given the path to the genres folder and saves it in a file
+	# called 'new_dataset.csv' in the same folder as the module
+	create_dataset(path_to_genres_folder)
+	\end{lstlisting}
+	\newpage
+	\textbf{Utils for the distance based classifiers}\mbox{}\\
+	- ./utils/distances.py
+	\begin{lstlisting}[language=Python]
+	# Returns the Manhattan Distance given x
+	# Assumption (x already contains the difference between the
+	# label and the prediction)
+	manhattan(x)
+	
+	# Returns the Chebyshev Distance given x
+	# Assumption (x already contains the difference between the
+	# label and the prediction)
+	chebyshev(x)
+	\end{lstlisting}
+	
+	\textbf{k-Nearest Neighbours Classifier Module}\mbox{}\\
+	- ./knn/k\_nearest\_neighbours\_classifier.py
+	\begin{lstlisting}[language=Python]
+class kNearestNeighboursClassifier:
+	__init__() takes no parameters
+	
+	# Trains the k-Nearest Neighbours Classifier given
+	# the training_set and the training_labels
+	'''
+	WARNING: dataset and labels are the COMPLETE dataset, even if you
+	want to classify less than 10 genres
+	'''
+	self.train(training_set, training_labels)
+	
+	# Returns the name of the predicted genre given the
+	# input sample, the list of possible genres,
+	# the distance function and the number of
+	# samples to check the distance from
+	self.classify(input, genres_to_classify=genre_names, 
+		distance=np.linalg.norm, k=1)
+	
+	# Returns the confusion matrix (always 10x10)
+	# of the validation set and validation_labels
+	# given the list of possible genres, the distance function
+	# and the number of samples to check the distance from
+	self.confusion_matrix(validation_set, validation_labels,
+		genres_to_classify=genre_names, distance=np.linalg.norm,k=1)
+	
+	# Returns the accuracy of the classifier given a confusion matrix
+	@staticmethod
+	compute_accuracy_from_matrix(c_mat)
+	
+	# Returns the accuracy of the classifier given
+	# the validation set and the validation labels
+	self.compute_accuracy(dataset_validation, labels_validation)
+	\end{lstlisting}
+	\newpage
+	\textbf{Nearest Centroid Classifier Module}\mbox{}\\
+	- ./nearest\_centroid/nearest\_centroid\_classifier.py
+	\begin{lstlisting}[language=Python]
+class NearestCentroidClassifier:
+	__init__() takes no parameters	
+	
+	# Trains the Nearest Centroid Classifier given
+	# the training set and the training labels
+	'''
+	WARNING: dataset and labels are the COMPLETE dataset, even if you
+	want to classify less than 10 genres
+	'''
+	self.train(dataset, labels)
+	
+	# Returns the name of the predicted genre given the input sample,
+	# the list of possible genres and the distance function.
+	# debug_mode prints the distances between the sample 
+	# and the centroids
+	self.classify(input, genres_to_classify=genre_names,
+		distance=np.linalg.norm, debug_mode=False)
+	
+	# Returns the confusion matrix (always 10x10)
+	# of the validation set and validation_labels
+	# given the list of possible genres and the distance function
+	self.confusion_matrix(validation_set, validation_labels,
+		genres_to_classify=genre_names, distance=np.linalg.norm)
+	
+	# Returns the accuracy of the classifier given a confusion matrix
+	@staticmethod
+	compute_accuracy_from_matrix(c_mat)
+	
+	# Returns the accuracy of the classifier given
+	# the validation set and the validation labels
+	self.compute_accuracy(self, validation_set, validation_labels)
+	\end{lstlisting}
+	\newpage
+	\textbf{SVM One-To-One Module}\mbox{}\\
+	Modules which are not described in this guide are auxiliary to the main module used for multiclass classification\\ \newline
+	- ./svm/one\_to\_one/multiclass\_oto\_classifier.py
+	\begin{lstlisting}[language=Python]
+class MulticlassSVM_OTO:
+	# Instantiates the Multiclass SVM classifier given a list
+	# of possible genres and a binary classifier type
+	# (which extends SVMClassifier_OTO, can be either
+	# PrimalFeatureMapClassifier or PrimalLinearClassifier)
+	__init__(genre_list, classifier_type : type)
+	
+	# Trains all binary classifiers given a
+	# training set and training set labels
+	self.train_all(input_data, input_labels)
+	
+	# Returns the name of the predicted genre of an
+	# input sample
+	self.classify(input)
+	
+	# Returns the confusion matrix of the classifier
+	# given the validation set and the validation labels
+	self.confusion_matrix(input_data, input_labels)
+	
+	# Returns the accuracy of the classifier
+	# given the validation set and the validation labels
+	self.compute_accuracy(input_data, input_labels)
+	
+	# Returns the accuracy a classifier given the confusion matrix
+	@staticmethod
+	accuracy_from_matrix(conf_mat)
+	\end{lstlisting}
+	\newpage
+	\textbf{SVM One-To-Rest Module}\mbox{}\\
+	Modules which are not described in this guide are auxiliary to the main module used for multiclass classification\\ \newline
+	- ./svm/one\_to\_rest/multiclass\_otr\_classifier.py
+	\begin{lstlisting}[language=Python]
+class MulticlassSVM_OTR:
+	# Instantiates the Multiclass SVM classifier given a list
+	# of possible genres
+	__init__(genre_list)
+	
+	# Trains all binary classifiers given a
+	# training set and training set labels
+	self.train_all(dataset_train, labels_train)
+	
+	# Returns the name of the predicted genre of an
+	# input sample
+	self.classify(input)
+	
+	# Returns the confusion matrix of the classifier
+	# given the validation set and the validation labels
+	self.confusion_matrix(validation_data, validation_labels)
+	
+	# Returns the accuracy of the classifier
+	# given the validation set and the validation labels
+	self.compute_accuracy(input_data, input_labels)
+	\end{lstlisting}
 	\newpage
 	\printbibliography
 \end{document}

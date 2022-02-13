@@ -3,7 +3,8 @@ from feat_ext.sample_processing import get_normalized_train_valid_sets
 from svm.one_to_rest.multiclass_otr_classifier import *
 
 # Dataset import
-data = pd.read_csv('C:\\Users\\Marino\\PycharmProjects\\NAMLProject14-21\\extracted_dataset.csv')
+path_to_extracted_dataset = ''
+data = pd.read_csv(path_to_extracted_dataset)
 
 dataset_train, labels_train, dataset_valid, labels_valid = get_normalized_train_valid_sets(data)
 

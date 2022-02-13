@@ -10,7 +10,7 @@ class NearestCentroidClassifier:
     '''
     Computes the class centroids
     WARNING: dataset and labels are the COMPLETE dataset, even if you
-    want to classify a less than 10 genres
+    want to classify less than 10 genres
     '''
     def train(self, dataset, labels):
         self.centroids = list()
@@ -81,6 +81,6 @@ class NearestCentroidClassifier:
     def compute_accuracy(c_mat):
         return c_mat.trace() / np.sum(c_mat) * 100.0
 
-    def compute_accuracy(self):
-        conf_mat = self.confusion_matrix()
+    def compute_accuracy(self, validation_set, validation_labels):
+        conf_mat = self.confusion_matrix(validation_set, validation_labels)
         return NearestCentroidClassifier.compute_accuracy(conf_mat)
