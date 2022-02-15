@@ -124,7 +124,7 @@
 	\end{lstlisting}
 	
 	\begin{figure}[H]
-		\hspace{100pt}\includegraphics[scale=0.7]{visual_8_1}
+		\hspace{100pt}\includegraphics[scale=0.4]{visual_8_1}
 		\caption{Annotated Heatmap of the correlation of extracted features}
 	\end{figure}
 	From this visualization, it is evident that the three features are independent enough to be non-redundant in the classification. 
@@ -235,9 +235,9 @@
 	The problem of computing the \textit{maximum-margin hyperplane} exploiting \textit{support vectors} (samples from either class lying on the "gutter" that separates the two classes) can be formulated as follows:\\
 	\begin{align}
 		\min_{w,b} \Vert w \Vert &&
-		\text{s.t.}\ \ y_i(w^Tx-b)\ge 1
+		\text{s.t.}\ \ y_i(w^Tx_i-b)\ge 1
 	\end{align} 
-	Where $\mathbf{y_i =\pm 1}$ is the label of the class corresponding to sample $\mathbf{x}$.\\
+	Where $\mathbf{y_i =\pm 1}$ is the label of the class corresponding to sample $\mathbf{x_i}$.\\
 	
 	\begin{figure}[H]
 		\hspace{120pt}\includegraphics[scale=0.2]{exp1_legend}
@@ -250,7 +250,7 @@
 	The soft-margin formulation involves the usage of the \textbf{hingeloss} function, which makes the optimization problem become
 	
 	\begin{align}
-		\min_{w,b}\ \ \ \dfrac {1}{n} \sum_{i=1}^n{\max{\Big(0,1-y_i(w^Tx-b)\Big)}}
+		\min_{w,b}\ \ \ \dfrac {1}{n} \sum_{i=1}^n{\max{\Big(0,1-y_i(w^Tx_i-b)\Big)}}
 	\end{align}
 
 	The optimization problem is unconstrained, which enables us to apply the \textit{Gradient Descent} method, particularly appropriate considering the convexity of the function. Most soft-margin implementations also feature a \textit{penalization} term, but in our implementation such parameter ended up decreasing the accuracy. Hence, we decided to remove it.
@@ -262,7 +262,7 @@
 	\begin{figure}[H]
 		\includegraphics[scale=0.4]{plane1}
 		\includegraphics[scale=0.4]{plane1_side}
-		\caption{Plots of the hyperplane corresponding to the optimal parameters (two different rotations of the point of view)}
+		\caption{Plots of the hyperplane corresponding to the optimal parameters (two different points of view)}
 	\end{figure}
 
 	\textbf{Primal Formulation - Soft Margin with Feature Map}\\
@@ -284,7 +284,7 @@
 	\begin{figure}[H]
 		\includegraphics[scale=0.4]{quad_feat}
 		\includegraphics[scale=0.4]{quad_feat_side}
-		\caption{Plots of the non-linear margin corresponding to the optimal parameters (two different rotations of the point of view)}
+		\caption{Plots of the non-linear margin corresponding to the optimal parameters (two different points of view)}
 	\end{figure}
 	
 	\textbf{Dual Formulation - Linear Margin}\\
@@ -363,7 +363,8 @@
 		\hspace{120pt}\includegraphics[scale=0.44]{mfcc_acc}
 		\caption{Accuracies of classification with MFCC principal components}
 	\end{figure}
-	Considering the training time for the One-To-Rest classifier is way too long and the classification performance is poor, we did not include it in the MFCC classifiers notebook.
+	Please note that the One-To-One classifier implements the Linear Margin binary classifiers instead of the FeatureMap ones because a complete quadratic feature map would amount to 65-dimensional sample vectors.
+	Moreover, considering the training time for the One-To-Rest classifier is way too long and the classification performance is poor, we did not include it in the MFCC classifiers notebook.
 	Also, given that this alternative feature set does not improve accuracy compared to the feature triplet described before, we decided not to port the classification code to standalone python classes.
 	\newpage
 	
@@ -371,14 +372,14 @@
 	In this paragraph we will explain how to use the standalone python modules we developed. Some examples of the usage of the following classes and functions are available in the \textit{tests} folder.
 	
 	\textbf{Feature Extraction Modules}\mbox{}\\
-	- ./feat\_ext/sample\_processing.py
+	- /feat\_ext/sample\_processing.py
 	
 	\begin{lstlisting}[language=Python]
-	# Used to load a wav audio signal located in path and of
-	# type dtype (e.g. int16, int32, ...)
+	# Used to load a wav audio signal located in "path" and of
+	# type "dtype" (e.g. int16, int32, ...)
 	load_audio_signal(path, dtype)
 	
-	# Takes a audio signal and a sample rate returns a 30 sec extract
+	# Takes a audio signal and a sample rate and returns a 30 sec extract
 	# taken from the center of the signal
 	select_30sec_extract(signal, sampling_rate)
 		
@@ -393,7 +394,7 @@
 	get_normalized_train_valid_sets(data:pd.DataFrame, feature_count=3)
 	\end{lstlisting}
 
-	- ./feat\_ext/full\_feature\_extraction.py
+	- /feat\_ext/full\_feature\_extraction.py
 	
 	\begin{lstlisting}[language=Python]
 	# Given an audio signal, returns its Zero Crossing Rate value
@@ -407,26 +408,26 @@
 		
 	# Creates the full feature triplet set for the GTZAN dataset
 	# given the path to the genres folder and saves it in a file
-	# called 'new_dataset.csv' in the same folder as the module
+	# called 'triplet_dataset.csv' in the same folder as the module
 	create_dataset(path_to_genres_folder)
 	\end{lstlisting}
 	\newpage
 	\textbf{Utils for the distance based classifiers}\mbox{}\\
-	- ./utils/distances.py
+	- /utils/distances.py
 	\begin{lstlisting}[language=Python]
 	# Returns the Manhattan Distance given x
-	# Assumption (x already contains the difference between the
-	# label and the prediction)
+	# Assumption: x already contains the difference between the
+	# label and the prediction
 	manhattan(x)
 	
 	# Returns the Chebyshev Distance given x
-	# Assumption (x already contains the difference between the
-	# label and the prediction)
+	# Assumption: x already contains the difference between the
+	# label and the prediction
 	chebyshev(x)
 	\end{lstlisting}
 	
 	\textbf{k-Nearest Neighbours Classifier Module}\mbox{}\\
-	- ./knn/k\_nearest\_neighbours\_classifier.py
+	- /knn/k\_nearest\_neighbours\_classifier.py
 	\begin{lstlisting}[language=Python]
 class kNearestNeighboursClassifier:
 	__init__() takes no parameters
@@ -463,7 +464,7 @@ class kNearestNeighboursClassifier:
 	\end{lstlisting}
 	\newpage
 	\textbf{Nearest Centroid Classifier Module}\mbox{}\\
-	- ./nearest\_centroid/nearest\_centroid\_classifier.py
+	- /nearest\_centroid/nearest\_centroid\_classifier.py
 	\begin{lstlisting}[language=Python]
 class NearestCentroidClassifier:
 	__init__() takes no parameters	
@@ -500,7 +501,7 @@ class NearestCentroidClassifier:
 	\newpage
 	\textbf{SVM One-To-One Module}\mbox{}\\
 	Modules which are not described in this guide are auxiliary to the main module used for multiclass classification\\ \newline
-	- ./svm/one\_to\_one/multiclass\_oto\_classifier.py
+	- /svm/one\_to\_one/multiclass\_oto\_classifier.py
 	\begin{lstlisting}[language=Python]
 class MulticlassSVM_OTO:
 	# Instantiates the Multiclass SVM classifier given a list
@@ -525,14 +526,14 @@ class MulticlassSVM_OTO:
 	# given the validation set and the validation labels
 	self.compute_accuracy(input_data, input_labels)
 	
-	# Returns the accuracy a classifier given the confusion matrix
+	# Returns the accuracy of a classifier given the confusion matrix
 	@staticmethod
 	accuracy_from_matrix(conf_mat)
 	\end{lstlisting}
 	\newpage
 	\textbf{SVM One-To-Rest Module}\mbox{}\\
 	Modules which are not described in this guide are auxiliary to the main module used for multiclass classification\\ \newline
-	- ./svm/one\_to\_rest/multiclass\_otr\_classifier.py
+	- /svm/one\_to\_rest/multiclass\_otr\_classifier.py
 	\begin{lstlisting}[language=Python]
 class MulticlassSVM_OTR:
 	# Instantiates the Multiclass SVM classifier given a list

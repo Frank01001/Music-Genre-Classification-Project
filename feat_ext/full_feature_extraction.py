@@ -45,5 +45,5 @@ def create_dataset(path_to_genres_folder):
             print('Ended genre {} ({})'.format(k, genre))
     featurearr = np.array(featurelist).reshape(len(featurelist)//4, 4)
     df = pd.DataFrame(featurearr, columns=['ZCR', 'AVERAGE_ENERGY', 'SILENT_RATIO', 'CLASS'])
-    df.to_csv('new_dataset.csv')
+    df.to_csv('triplet_dataset.csv')
     return
