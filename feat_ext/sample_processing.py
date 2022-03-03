@@ -64,3 +64,20 @@ def get_normalized_train_valid_sets(data : pd.DataFrame, feature_count = 3):
     return dataset_train, labels_train, dataset_valid, labels_valid
 
 
+'''
+Returns the mean and std deviation of the dataset
+columns with feature start from left_col_index
+'''
+def get_feature_mean_and_std(data : pd.DataFrame, features):
+    partial_data = data[features]
+    # Dataset normalization
+    data_mean = partial_data.mean()
+    data_std = partial_data.std()
+    return data_mean, data_std
+
+
+'''
+Returns a sample normalized with the given vectors of mean and std deviation
+'''
+def normalized_sample(input, mean, std):
+    return (input - mean) / std

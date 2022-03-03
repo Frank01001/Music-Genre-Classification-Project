@@ -18,7 +18,9 @@ training_set, training_labels, valid_set, valid_labels = get_normalized_train_va
 ncc = NearestCentroidClassifier()
 ncc.train(training_set, training_labels)
 
-predicted = ncc.classify(sample, genres_to_classify=genre_names)
+mean, std = get_feature_mean_and_std(data, features=['ZCR', 'AVERAGE_ENERGY', 'SILENT_RATIO'])
+sample_normalized = normalized_sample(sample, mean, std)
+predicted = ncc.classify(sample_normalized, genres_to_classify=genre_names)
 
 print('Classified %s as %s' % (path_to_wav, predicted))
 
