@@ -6,6 +6,8 @@ Group Details:
 Group ID: 14
 Academic Year: 2021/2022
 
+WARNING: This project was meant to evaluate the practical implementation aspect of the requested algorithms. For this reason, no crossvalidation, model selection or other performance enhancements were applied to the classifiers.
+
 Implemented Classifiers
 - k-Nearest Neighbours
 - Nearest Centroid
